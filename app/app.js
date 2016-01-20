@@ -12,3 +12,14 @@ var app = angular.module('RetameApp', [
                 redirectTo: '/'
             });
     }]);
+
+    app.directive('myImgDirective', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, elem, attrs) {
+            console.log(elem);
+            scope.photoGalleryStyle = {'background': 'url("'+attrs.src+'")',
+                                      'background-size': 'cover'}; 
+        }
+    };
+});

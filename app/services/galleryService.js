@@ -12,20 +12,20 @@
             }, 
             {
                 id: 2, 
-                 imagen: '/img/galeria/cateto_ilustrado.jpg', 
+                imagen: '/img/galeria/cateto_ilustrado.jpg', 
                 author:'Pedro', 
                 theme:'Pueblerinos', 
                 localidad:'Algemesí',
-                 privacidad:'publico',
+                privacidad:'publico',
                 dareId: 1
             },
             {
                 id: 3, 
-                 imagen: '/img/galeria/Mufeo.jpg', 
+                imagen: '/img/galeria/Mufeo.jpg', 
                 author:'Pepe', 
                 theme:'Pueblerinos', 
                 localidad:'Algemesí',
-                 privacidad:'publico',
+                privacidad:'publico',
                 dareId: 1
             }, 
             {
@@ -34,7 +34,7 @@
                 author:'Rocío', 
                 theme:'Pueblerinos', 
                 localidad:'Algemesí',
-                 privacidad:'publico',
+                privacidad:'publico',
                 dareId: 1
             },
            

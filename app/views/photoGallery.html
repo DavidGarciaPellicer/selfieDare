@@ -1,17 +1,8 @@
-        <div class="row clearfix no-margin">
-            <ul class="gallery-post-grid holder">
-
-                    <!-- Gallery Item 1 -->
-                    <li  class="col-lg-3 gallery-item" data-id="id-1" data-type="illustration"
-                        ng-repeat="foto in galeria">
-                        
-                        <a href="gallery-single.htm">
-                        <img ng-src="{{foto.imagen}}" alt="Gallery"></a>
-                        <h2><a href="gallery-single.htm">
-                        {{foto.author}}</h2>
-                        <p>{{foto.localidad}}</p>
-                            
-                    </li>
-
-                </ul>
-        </div>
+<div class="col-md-12">
+    <div class = "row">
+           <div class = "col-sm-6 col-md-3" ng-repeat="foto in galeria">
+            <a my-img-directive href = "#" src="{{foto.imagen}}" ng-style="photoGalleryStyle" class = "thumbnail">
+              </a>
+           </div>  
+    </div>
+</div>
