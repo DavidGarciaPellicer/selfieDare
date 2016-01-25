@@ -10,4 +10,5 @@ Será una app web donde la gente pueda subir fotografías y formar grupos privad
 Este proyecto se realizará con angularJS por lo que el despliegue ha de realizarse a través de algún servidor de aplicaciones como NodeJS p.e
 
 ##Contribuir
+Proeycto libre en el que cualquiera puede colaborar
 
