@@ -1,2 +1,8 @@
 # selfieDare
-Demo repository for DI
+
+##Intro
+
+##Por qué realizamos este proyecto
+
+##Contribuir
+
