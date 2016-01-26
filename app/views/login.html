@@ -1,0 +1,29 @@
+<div class="container" style="max-width:800px">
+
+<form class="form-horizontal"
+      ng-submit="login(form)">
+  <fieldset>
+    <legend>Login</legend>
+      <div class="form-group">
+      <label for="login" class="col-lg-2 control-label">Nombre</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="login" placeholder="Nombre" ng-model="form.username">
+      </div>  
+    </div>
+      
+    <div class="form-group">
+      <label for="pwd" class="col-lg-2 control-label">Password</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" id="pwd" placeholder="Password" ng-model="form.password">
+      </div>  
+    </div>
+   
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="submit" class="btn btn-default">Login</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+    
+</div>

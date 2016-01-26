@@ -3,7 +3,7 @@
                 var gallery = [
             {
                 id: 1, 
-                imagen: '/img/galeria/blog.gif', 
+                imagen: '/images/galeria/cat.jpg', 
                 author:'Juan', 
                 theme:'Pueblerinos',
                 localidad:'Algemesí',
@@ -12,7 +12,7 @@
             }, 
             {
                 id: 2, 
-                imagen: '/img/galeria/cateto_ilustrado.jpg', 
+                imagen: '/images/galeria/jump.jpg', 
                 author:'Pedro', 
                 theme:'Pueblerinos', 
                 localidad:'Algemesí',
@@ -21,7 +21,7 @@
             },
             {
                 id: 3, 
-                imagen: '/img/galeria/Mufeo.jpg', 
+                imagen: '/images/galeria/mirada2niña.jpg', 
                 author:'Pepe', 
                 theme:'Pueblerinos', 
                 localidad:'Algemesí',
@@ -30,7 +30,7 @@
             }, 
             {
                 id: 4, 
-                imagen: '/img/galeria/otrocateto.jpeg', 
+                imagen: '/images/galeria/mirada1.jpg', 
                 author:'Rocío', 
                 theme:'Pueblerinos', 
                 localidad:'Algemesí',
@@ -40,7 +40,7 @@
            
             {
                 id: 5, 
-                imagen: '/img/galeria/blog.gif', 
+                imagen: '/images/galeria/morning.jpg', 
                 author:'Juan', 
                 theme:'Pueblerinos',
                 localidad:'Algemesí',
@@ -49,28 +49,29 @@
             }, 
             {
                 id: 6, 
-                 imagen: '/img/galeria/cateto_ilustrado.jpg', 
+                imagen: '/images/galeria/jump.jpg', 
                 author:'Pedro', 
                 theme:'Pueblerinos', 
                 localidad:'Algemesí',
-                 privacidad:'publico',
+                privacidad:'publico',
                 dareId: 1
             },
             {
                 id: 7, 
-                 imagen: '/img/galeria/Mufeo.jpg', 
+                imagen: '/images/galeria/mirada2niña.jpg', 
                 author:'Pepe', 
                 theme:'Pueblerinos', 
                 localidad:'Algemesí',
+                privacidad:'publico',
                 dareId: 1
             }, 
             {
                 id: 8, 
-                imagen: '/img/galeria/otrocateto.jpeg', 
-                author:'Rocío', 
-                theme:'Pueblerinos', 
+                imagen: '/images/galeria/cat.jpg', 
+                author:'Juan', 
+                theme:'Pueblerinos',
                 localidad:'Algemesí',
-                 privacidad:'publico',
+                privacidad:'publico',
                 dareId: 1
             }
         ];  
