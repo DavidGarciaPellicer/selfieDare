@@ -93,7 +93,7 @@ h1 .subtitle{
 .navbar-nav > li > a {
     margin: 6px 3px;
     padding: 6px 7px;
-    text-align: center;
+    c
     min-width: 70px;
 }
 .navbar-nav > li > a [class^="fa"]{
@@ -455,5 +455,13 @@ h4{
 .space-200{
     height: 200px;
 
+}
+
+.footer {
+  height: 50px;
+  padding: 20px;
+  background-color: transparent;
+  margin-top: 50px;
+  text-align: center;
 }
 

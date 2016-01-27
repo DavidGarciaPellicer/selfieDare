@@ -21,6 +21,10 @@ var app = angular.module('RetameApp', [
                 templateUrl: 'app/views/login.html',
                 controller: 'LoginController'
             })
+           .when('/perfil', {
+                templateUrl: 'app/views/perfil.html',
+                controller: 'ProfileController'
+            })
             .otherwise({
                 redirectTo: '/'
             });
