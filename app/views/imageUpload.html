@@ -1,0 +1,43 @@
+<form name="myForm">
+    
+      <br>Elige una Foto:
+      <input type="file" ngf-select ng-model="picFile" name="file"    
+             accept="image/*" ngf-max-size="2MB" required
+             ngf-model-invalid="errorFiles">
+      <i ng-show="myForm.file.$error.maxSize">File too large 
+          {{errorFiles[0].size / 1000000|number:1}}MB: max 2M</i>
+      <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Borrar</button>
+      <br>
+    
+    <div class="form-group">
+      <label for="name" class="col-lg-2 control-label">Descripción</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="titulo" placeholder="Título" ng-model="form.titulo">
+      </div>  
+    </div>
+    
+    <div class="form-group">
+      <label for="categoria" class="col-lg-2 control-label">Categoría</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="categoria" placeholder="Categoria" ng-model="form.categoria">
+      </div>  
+    </div>
+       <div class="form-group">
+      <label for="name" class="col-lg-2 control-label">Descripción</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="descripcion" placeholder="Descripcion" ng-model="form.descripcion">
+      </div>  
+    </div>
+    
+    
+    
+      <button ng-disabled="!myForm.$valid" 
+              ng-click="uploadPic(picFile)">Enviar</button>
+      <span class="progress" ng-show="picFile.progress >= 0">
+        <div style="width:{{picFile.progress}}%" 
+            ng-bind="picFile.progress + '%'"></div>
+      </span>
+      <span ng-show="picFile.result">Subida correctamente</span>
+      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>        
+    
+  </form>

@@ -1,7 +1,20 @@
 (function() {
     var UserService = function($q) {
         
-        var currentuser = {}; 
+        var currentuser = {},
+            images = [];
+        
+        this.getUsuarioSesion = function(){
+            return JSON.parse(sessionStorage.getItem('usuarioPhotoChallenge'));
+        },
+            
+        this.guardarUsuarioSesion = function(user){
+            sessionStorage.usuarioPhotoChallenge = JSON.stringify(user);
+        },
+        
+        this.removeSesion = function(){
+            sessionStorage.removeItem("usuarioPhotoChallenge");
+        },
         
         this.signup = function(form) {
             var d = $q.defer();
@@ -34,12 +47,14 @@
         },
         	this.login = function (email, password) {
 			var d = $q.defer();
+            console.log(this);
+            if(this.getUsuarioSesion())
+                removeSesion(); 
 
 			Parse.User.logIn(email, password, {
 				success: function (user) {
 					console.log("Logged In");
-				    currentuser = user;
-					d.resolve(self.user);
+					d.resolve(user);
 				},
 				error: function (user, error) {
 				    console.log(user);
@@ -49,7 +64,42 @@
 			});
             
 			return d.promise;
+		},
+        
+            this.saveImage = function (dataImagen, form) {
+			//self.isSaving = true;
+			var d = $q.defer();
+
+			var Image = Parse.Object.extend("Image");
+			//var user = AuthService.user;
+			var file = dataImagen ? new Parse.File("photo.jpg", {base64: dataImagen.$ngfDataUrl}) : null;
+            
+            //var file = dataImagen.$ngfDataUrl;
+
+			var image = new Image();
+			image.set("owner", this.getUsuarioSesion());
+			image.set("picture", file);
+			image.set("title", form.titulo);   
+			image.set("category", form.categoria);
+            image.set("description", form.descripcion);
+			image.set("created", new Date());
+
+			image.save(null, {
+				success: function (imagen) {
+					console.log("Imagen guardada");
+					images.push(imagen);
+					d.resolve(imagen);
+				},
+				error: function (item, error) {
+				    alert('Error guardando la imagen: ' + error.message);
+					d.reject(error);
+				}
+			});
+
+			return d.promise;
 		}
+
+        
 
     };
     

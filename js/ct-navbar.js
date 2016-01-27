@@ -43,15 +43,3 @@ $(document).scroll(function() {
     }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-

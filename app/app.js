@@ -1,7 +1,8 @@
 var app = angular.module('RetameApp', [
   'ngRoute',
   'parse-angular',
-  'parse-angular.enhance'
+  'parse-angular.enhance',
+   'ngFileUpload'
 ]);
 
   //'parse-angular',
@@ -21,9 +22,14 @@ var app = angular.module('RetameApp', [
                 templateUrl: 'app/views/login.html',
                 controller: 'LoginController'
             })
+
            .when('/perfil', {
                 templateUrl: 'app/views/perfil.html',
                 controller: 'ProfileController'
+            })
+            .when('/upload', {
+                templateUrl: 'app/views/imageUpload.html',
+                controller: 'ImageUploadController'
             })
             .otherwise({
                 redirectTo: '/'

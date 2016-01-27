@@ -18,6 +18,8 @@
     <script src="/bower_components/angular-route/angular-route.min.js"></script>
     <script src="https://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
     <script src="/bower_components/parse-angular-patch/dist/parse-angular.js"></script>
+    <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script> <!-- for no html5 browsers support -->
+    <script src="bower_components/ng-file-upload-shim/ng-file-upload-all.js"></script> <!-- for no html5 browsers support -->
     <script src="app/app.js"></script>
     <script src="app/controllers/galleryController.js"></script>
     <script src="app/services/galleryService.js"></script>
@@ -25,6 +27,8 @@
     <script src="app/services/userService.js"></script>
     <script src="app/controllers/loginController.js"></script>
     <script src="app/controllers/profileController.js"></script>
+    <script src="app/controllers/imageUploadController.js"></script>
+
 </head>
 
 <body ng-app="RetameApp">
@@ -67,6 +71,7 @@
                           <ul class="dropdown-menu">
                             <li><a href="#/registro">Registro</a></li>
                             <li><a href="#/login">Login</a></li>
+                            <li><a onclick="destruirSesion()">Logout</a></li>
                           </ul>
                     </li>
                </ul>
@@ -105,6 +110,16 @@
 	<script src="js/bootstrap.js" type="text/javascript"></script>
 	
 	<script src="js/ct-navbar.js"></script>
+    <script>
+    
+        function destruirSesion(){
+              if(sessionStorage.getItem("usuarioPhotoChallenge"))
+                 sessionStorage.removeItem("usuarioPhotoChallenge");
+            
+            console.log('destruir sesión');
+        }
+    
+    </script>
 	
 
 </html>
