@@ -1,8 +1,9 @@
 (function() {
     
     var ProfileController = function ($scope, $log, $window, UserService) {
-      $scope.usuario = UserService.currentUser;
-        console.log($scope.usuario);
+        
+      $scope.usuario = UserService.getUsuarioSesion();
+        
         
         
     };

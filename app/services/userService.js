@@ -2,7 +2,8 @@
     var UserService = function($q) {
         
         var currentuser = {},
-            images = [];
+            images = [],
+            imagenesUsuario = [];
         
         this.getUsuarioSesion = function(){
             return JSON.parse(sessionStorage.getItem('usuarioPhotoChallenge'));
@@ -77,7 +78,7 @@
             //var file = dataImagen.$ngfDataUrl;
 
 			var image = new Image();
-			image.set("owner", this.getUsuarioSesion());
+			image.set("owner", this.getUsuarioSesion().objectId);
 			image.set("picture", file);
 			image.set("title", form.titulo);   
 			image.set("category", form.categoria);
@@ -97,7 +98,40 @@
 			});
 
 			return d.promise;
-		}
+		},
+            
+        this.getUserImages = function(){
+             {
+			//self.isLoading = true;
+			var d = $q.defer();
+
+			// Initialise Query
+			var Image = Parse.Object.extend("Image");
+			var imageQuery = new Parse.Query(Image);
+			imageQuery.equalTo("owner", this.getUsuarioSesion().objectId);
+            imageQuery.descending('created');
+
+			// Paginate
+			//imageQuery.skip(self.page * self.page_size);
+			//imageQuery.limit(self.page_size);
+
+			// Perform the query
+			mealQuery.find({
+				success: function (imagenes) {
+					angular.forEach(imagenes, function (img) {
+						var img = new Imagen(img);
+						this.imagenesUsuario.push(img)
+					});
+					console.debug(this.imagenesUsuario);
+
+					// Finished
+					d.resolve();
+				}
+			});
+
+			return d.promise;
+            
+        }
 
         
 
