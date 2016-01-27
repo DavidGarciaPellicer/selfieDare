@@ -9,6 +9,7 @@
         console.log($location);
        $scope.login = function(form){
                UserService.login($scope.form.username, $scope.form.password).then(function(user){
+                    UserService.guardarUsuarioSesion(user);
                    //redirección a página principal
                    $location.path('/');
                });
