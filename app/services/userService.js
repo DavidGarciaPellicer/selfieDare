@@ -5,6 +5,11 @@
             images = [],
             imagenesUsuario = [];
         
+        
+        this.getImgUsuario = function(){
+            return imagenesUsuario;
+        },
+        
         this.getUsuarioSesion = function(){
             return JSON.parse(sessionStorage.getItem('usuarioPhotoChallenge'));
         },
@@ -101,7 +106,7 @@
 		},
             
         this.getUserImages = function(){
-             {
+             
 			//self.isLoading = true;
 			var d = $q.defer();
 
@@ -116,11 +121,11 @@
 			//imageQuery.limit(self.page_size);
 
 			// Perform the query
-			mealQuery.find({
+			imageQuery.find({
 				success: function (imagenes) {
 					angular.forEach(imagenes, function (img) {
-						var img = new Imagen(img);
-						this.imagenesUsuario.push(img)
+						var img = new Image(img);
+						imagenesUsuario.push(img)
 					});
 					console.debug(this.imagenesUsuario);
 

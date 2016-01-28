@@ -1,7 +1,11 @@
 <div class="container" style="max-width:800px">
 
-    <div class = "row">
+    <div class = "row" ng-repeat="image in imagenes">
+        <p>{{image.attributes.description}}
+            
         
+        </p>
+        <img src="{{image.attributes.picture._url}}">
         
         
     </div>

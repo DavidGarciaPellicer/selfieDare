@@ -4,7 +4,11 @@
         
       $scope.usuario = UserService.getUsuarioSesion();
         
+    UserService.getUserImages().then(function(){
+        $scope.imagenes = UserService.getImgUsuario();
         
+        console.log($scope.imagenes);
+      });
         
     };
     
