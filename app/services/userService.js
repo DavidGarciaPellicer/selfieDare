@@ -119,8 +119,8 @@
 			mealQuery.find({
 				success: function (imagenes) {
 					angular.forEach(imagenes, function (img) {
-						var img = new Imagen(img);
-						this.imagenesUsuario.push(img)
+						var img = new Image(img);
+						this.imagenesUsuario.push(img);
 					});
 					console.debug(this.imagenesUsuario);
 

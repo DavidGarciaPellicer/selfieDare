@@ -6,6 +6,8 @@
         
         
         
+        
+        
     };
     
     ProfileController.$inject = ['$scope', '$log', '$window','UserService'];
