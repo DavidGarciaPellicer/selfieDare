@@ -44,7 +44,9 @@ var app = angular.module('RetameApp', [
     return {
         restrict: 'A',
         link: function (scope, elem, attrs) {
-            scope.photoGalleryStyle = {'background': 'url("'+attrs.src+'")',
+            var img = JSON.parse(attrs.src);
+            console.log(img.title);
+            scope.photoGalleryStyle = {'background': 'url("'+img.picture._url+'")',
                                       'background-size': 'cover'}; 
         }
     };

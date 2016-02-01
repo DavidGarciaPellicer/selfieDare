@@ -1,8 +1,9 @@
 
 <div class="col-md-12">
     <div class = "row">
-           <div class = "col-sm-6 col-md-3" ng-repeat="foto in galeria">
-            <a my-img-directive href = "#" src="{{foto.imagen}}" ng-style="photoGalleryStyle" class = "thumbnail">
+           <div class = "col-sm-6 col-md-6" ng-repeat="foto in galeria">
+            <a my-img-directive href = "#" src="{{foto.attributes}}" ng-style="photoGalleryStyle" class = "thumbnail"
+               categoria="{{foto.attributes.title}}">
               </a>
            </div>  
     </div>

@@ -3,7 +3,13 @@
         
         var currentuser = {},
             images = [],
-            imagenesUsuario = [];
+            imagenesUsuario = [],
+            avatares = [],
+            totalactividades = [];
+        
+        this.getAvatars = function(){
+            return avatares;
+        },
         
          this.getImgUsuario = function(){
             return imagenesUsuario;
@@ -20,35 +26,84 @@
         this.removeSesion = function(){
             sessionStorage.removeItem("usuarioPhotoChallenge");
         },
+             
+        this.getParseAvatars = function () {
+			var d = $q.defer();
+
+			// Initialise Query
+			var Avatar = Parse.Object.extend("avatar");
+			var avatarQuery = new Parse.Query(Avatar);
+             
+			// Perform the query
+			avatarQuery.find({
+				success: function (imagenes) {
+					angular.forEach(imagenes, function (img) {
+						avatares.push(img)
+					});
+					console.debug(this.avatares);
+
+					// Finished
+					d.resolve(avatares);
+				}
+			});
+
+			return d.promise;
+		},
+            
+        this.getUserAvatar = function (id) {
+			var d = $q.defer();
+
+			// Initialise Query
+			var Avatar = Parse.Object.extend("avatar");
+			var avatarQuery = new Parse.Query(Avatar);
+            avatarQuery.equalTo("objectId", id);
+             
+			// Perform the query
+			avatarQuery.find({
+				success: function (avatar) {
+					// Finished
+                    console.log(avatar);
+					d.resolve(avatar[0].attributes);
+				}
+			});
+
+			return d.promise;
+		},
         
-        this.signup = function(form) {
-            var d = $q.defer();
+        this.signup = function(form, avatar) {
+            var d = $q.defer();             
             
             var User = Parse.Object.extend("User");
             
-            var user = new User();
-            user.set('username', form.email);
-            user.set('password', form.password);
-            user.set('name', form.nombre);
-            user.set('city', form.poblacion);
-            user.set('sex', form.sexo);
-            user.set('email', form.email);
-            user.set('birthday', form.nacimiento);
-            console.log('user:'+user);
-            user.signUp(null, {
-               success: function(user){
-                   console.log('usuario creado');
-                   currentuser = user;
-                   d.resolve(user);
-               },
-                error: function(item, error){
-                    console.log(item);
-                   alert('error: '+error.message); 
-                    d.reject(error);
-                }
-            });
+           // this.getUserAvatar(avatar.id).then(function(avatar){
+                
+                var user = new User();
+                user.set('username', form.email);
+                user.set('password', form.password);
+                user.set('name', form.nombre);
+                user.set('city', form.poblacion);
+                user.set('sex', form.sexo);
+                user.set('email', form.email);
+                user.set('birthday', form.nacimiento);
+                user.set('imagen', avatar);
+                console.log('user:'+user);
+                user.signUp(null, {
+                   success: function(user){
+                       console.log('usuario creado');
+                       currentuser = user;
+                       d.resolve(user);
+                   },
+                    error: function(item, error){
+                        console.log(item);
+                       alert('error: '+error.message); 
+                        d.reject(error);
+                    }
+                });                           
+                
+            //});
             
-            return d.promise;
+                 return d.promise;
+           
         },
         	this.login = function (email, password) {
 			var d = $q.defer();

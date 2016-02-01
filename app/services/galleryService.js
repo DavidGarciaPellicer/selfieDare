@@ -1,84 +1,35 @@
 (function() {
-    var GalleryService = function() {
-                var gallery = [
-            {
-                id: 1, 
-                imagen: '/images/galeria/cat.jpg', 
-                author:'Juan', 
-                theme:'Pueblerinos',
-                localidad:'Algemesí',
-                privacidad:'publico',
-                dareId: 1
-            }, 
-            {
-                id: 2, 
-                imagen: '/images/galeria/jump.jpg', 
-                author:'Pedro', 
-                theme:'Pueblerinos', 
-                localidad:'Algemesí',
-                privacidad:'publico',
-                dareId: 1
-            },
-            {
-                id: 3, 
-                imagen: '/images/galeria/mirada2niña.jpg', 
-                author:'Pepe', 
-                theme:'Pueblerinos', 
-                localidad:'Algemesí',
-                privacidad:'publico',
-                dareId: 1
-            }, 
-            {
-                id: 4, 
-                imagen: '/images/galeria/mirada1.jpg', 
-                author:'Rocío', 
-                theme:'Pueblerinos', 
-                localidad:'Algemesí',
-                privacidad:'publico',
-                dareId: 1
-            },
-           
-            {
-                id: 5, 
-                imagen: '/images/galeria/morning.jpg', 
-                author:'Juan', 
-                theme:'Pueblerinos',
-                localidad:'Algemesí',
-                 privacidad:'publico',
-                dareId: 1
-            }, 
-            {
-                id: 6, 
-                imagen: '/images/galeria/jump.jpg', 
-                author:'Pedro', 
-                theme:'Pueblerinos', 
-                localidad:'Algemesí',
-                privacidad:'publico',
-                dareId: 1
-            },
-            {
-                id: 7, 
-                imagen: '/images/galeria/mirada2niña.jpg', 
-                author:'Pepe', 
-                theme:'Pueblerinos', 
-                localidad:'Algemesí',
-                privacidad:'publico',
-                dareId: 1
-            }, 
-            {
-                id: 8, 
-                imagen: '/images/galeria/cat.jpg', 
-                author:'Juan', 
-                theme:'Pueblerinos',
-                localidad:'Algemesí',
-                privacidad:'publico',
-                dareId: 1
-            }
-        ];  
+    var GalleryService = function($q) {
+                var gallery = [];
         
         this.getGallery = function() {
             return gallery;
-        };
+        },
+            
+        this.getIndexImages = function(){
+
+			var d = $q.defer();
+
+			// Initialise Query
+			var Image = Parse.Object.extend("Image");
+			var imageQuery = new Parse.Query(Image);
+			imageQuery.equalTo("category", "inicio");
+
+			// Perform the query
+			imageQuery.find({
+				success: function (imagenes) {
+					angular.forEach(imagenes, function (img) {
+						var img = new Image(img);
+						gallery.push(img)
+					});
+					// Finished
+					d.resolve(gallery);
+				}
+			});
+
+			return d.promise;
+            
+        },
         
         this.getPhoto = function(photoId) {
             for (var i=0,len=gallery.length;i<len;i++) {
@@ -87,7 +38,7 @@
                }
             }
             return {};
-        };
+        }
 
     };
     
