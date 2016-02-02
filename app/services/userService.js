@@ -109,7 +109,7 @@
 			var d = $q.defer();
             console.log(this);
             if(this.getUsuarioSesion())
-                removeSesion(); 
+                this.removeSesion(); 
 
 			Parse.User.logIn(email, password, {
 				success: function (user) {

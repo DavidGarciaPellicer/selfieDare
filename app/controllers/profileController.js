@@ -1,6 +1,6 @@
 (function() {
     
-    var ProfileController = function ($scope, $log, $window, UserService, ActividadesService, $location) {
+    var ProfileController = function ($scope, $log, $window, UserService, ActividadesService, $location, ReservasService) {
         
         if(!sessionStorage.getItem('usuarioPhotoChallenge')) $location.path('login');
         
@@ -63,10 +63,18 @@
         };
         
         $scope.isSet(0);
+       //mostrar reservas usuario
+        
+        var usuario = JSON.parse(sessionStorage.getItem('usuarioPhotoChallenge'));
+        ReservasService.getUserReservas(usuario.objectId).then(function(reserva){
+        console.log("reservas"+reserva);    
+        });
+                                              
+                                            
         
     };
     
-    ProfileController.$inject = ['$scope', '$log', '$window','UserService','ActividadesService','$location'];
+    ProfileController.$inject = ['$scope', '$log', '$window','UserService','ActividadesService','$location','ReservasService'];
 
     angular.module('RetameApp')
       .controller('ProfileController', ProfileController);
