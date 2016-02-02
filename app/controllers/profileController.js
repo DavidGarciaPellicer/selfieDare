@@ -67,7 +67,7 @@
         
         var usuario = JSON.parse(sessionStorage.getItem('usuarioPhotoChallenge'));
         ReservasService.getUserReservas(usuario.objectId).then(function(reserva){
-        console.log("reservas"+reserva);    
+        $scope.Reservas = reserva;   
         });
                                               
                                             

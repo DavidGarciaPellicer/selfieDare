@@ -8,7 +8,7 @@
 			// Initialise Query
 			var Reservas = Parse.Object.extend("Reservas");
 			var reservasQuery = new Parse.Query(Reservas);
-			//reservasQuery.equalTo("userId", userId);
+			reservasQuery.equalTo("userId", userId);
             reservasQuery.descending('createdAt');
 
 			// Perform the query
