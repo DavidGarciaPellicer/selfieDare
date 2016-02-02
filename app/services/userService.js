@@ -190,7 +190,26 @@
 
 			return d.promise;
             
-        }
+        },
+        
+        this.getMonitores = function () {
+			var d = $q.defer();
+
+			// Initialise Query
+			var User = Parse.Object.extend("User");
+			var userQuery = new Parse.Query(User);
+            userQuery.equalTo("monitor", true);
+             
+			// Perform the query
+			userQuery.find({
+				success: function (monitores) {
+					// Finished
+					d.resolve(monitores);
+				}
+			});
+
+			return d.promise;
+		}
 
         
 

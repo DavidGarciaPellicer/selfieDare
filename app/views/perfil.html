@@ -4,14 +4,11 @@
     <div class="row profile">
         <div class="col-md-9">
             <div class="profile-content">
-			  <h2>Próximas clases</h2>
-                <div class = "row" ng-repeat="actividad in actividades">
-                    <h2>{{actividad.attributes.type}}</h2>
-                    <p>{{actividad.attributes.date | date:'medium'}}</p>
-                    <p>Quedan {{actividad.attributes.disponibles}} plazas libres</p>
-                </div>.
-            </div>
-		</div>
+            
+                <div ui-view></div>
+
+      </div>      
+	</div>
         
 		<div class="col-md-3">
 			<div class="profile-sidebar">
@@ -35,12 +32,12 @@
 				<div class="profile-usermenu">
 					<ul class="nav">
 						<li class="active">
-							<a href="">
+							<a ui-sref=".actividades">
 							<i class="glyphicon glyphicon-home"></i>
 							 Próximas clases</a>
 						</li>
 						<li>
-							<a href="">
+							<a ui-sref=".reservas">
 							<i class="glyphicon glyphicon-user"></i>
 							Mis reservas </a>
 						</li>

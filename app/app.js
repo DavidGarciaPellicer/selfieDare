@@ -2,37 +2,54 @@ var app = angular.module('RetameApp', [
   'ngRoute',
   'parse-angular',
   'parse-angular.enhance',
-   'ngFileUpload'
+   'ngFileUpload',
+    'ui.router'
 ]);
 
   //'parse-angular',
   //'parse-angular.enhance'
 
-    app.config( ['$routeProvider', '$locationProvider', function($routeProvider,$locationProvider) {
-        $routeProvider
-            .when('/', {
-                templateUrl: 'app/views/photoGallery.html',
-                controller: 'GalleryController'
-            })
-            .when('/registro', {
-                templateUrl: 'app/views/register.html',
-                controller: 'CreateUserController'
-            })
-             .when('/login', {
-                templateUrl: 'app/views/login.html',
-                controller: 'LoginController'
-            })
+    app.config( ['$stateProvider', '$urlRouterProvider', function($stateProvider,$urlRouterProvider) {
 
-           .when('/perfil', {
-                templateUrl: 'app/views/perfil.html',
-                controller: 'ProfileController'
+        // For any unmatched url, redirect to /state1
+          $urlRouterProvider.otherwise("inicio");
+          //
+          // Now set up the states
+          $stateProvider
+            .state('inicio', {
+              url: "/inicio",
+              templateUrl: "app/views/photoGallery.html",
+               controller: 'GalleryController'
             })
-            .when('/upload', {
-                templateUrl: 'app/views/imageUpload.html',
-                controller: 'ImageUploadController'
+            .state('registro', {
+              url: "/registro",
+              templateUrl: "app/views/register.html",
+              controller: 'CreateUserController'
             })
-            .otherwise({
-                redirectTo: '/'
+            .state('login', {
+              url: "/login",
+              templateUrl: "app/views/login.html",
+              controller: 'LoginController'
+            })
+            .state('perfil', {
+              url: "/perfil",
+              templateUrl: 'app/views/perfil.html',
+              controller: 'ProfileController'
+            })
+            .state('perfil.actividades', {
+              url: "/perfil/reservas",
+              templateUrl: 'app/views/perfil/actividades.html',
+              controller: 'ProfileController'
+            })
+            .state('perfil.reservas', {
+              url: "/perfil/reservas",
+              templateUrl: 'app/views/perfil/reservas.html',
+              controller: 'ProfileController'
+            })
+            .state('upload', {
+              url: "/upload",
+              templateUrl: 'app/views/imageUpload.html',
+              controller: 'ImageUploadController'
             });
         
          Parse.initialize("80UaJ4k9Pz13b3T7Dlst5wKMyUiIVBUcMZBTojnb", "y1bDIOOUYDKOMkjSNxmb34wEr9qTWIIjVNIzIUiv");
@@ -50,4 +67,6 @@ var app = angular.module('RetameApp', [
                                       'background-size': 'cover'}; 
         }
     };
+        
 });
+

@@ -1,6 +1,13 @@
 (function() {
     
-    var GalleryController = function ($scope, $log, $window, GalleryService) {
+    var GalleryController = function ($scope, $log, $window,$location, GalleryService) {
+        
+        $scope.destruirSesion = function (){
+              if(sessionStorage.getItem("usuarioPhotoChallenge"))
+                 sessionStorage.removeItem("usuarioPhotoChallenge");           
+            console.log('destruir sesión');
+            $location.path("/");
+        } 
         
         if(GalleryService.getGallery().length<=0){
 
@@ -13,7 +20,7 @@
         }
     };
     
-    GalleryController.$inject = ['$scope', '$log', '$window','GalleryService'];
+    GalleryController.$inject = ['$scope', '$log', '$window','$location','GalleryService'];
 
     angular.module('RetameApp')
       .controller('GalleryController', GalleryController);
