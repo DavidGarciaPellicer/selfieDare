@@ -17,7 +17,7 @@
     UserService.getMonitores().then(function(monitores){
             $scope.monitores = monitores;
     });
-        
+    
     ActividadesService.getWeekActividades().then(function(actividades){
         actividadesPorDia = [];
         console.log(actividadesPorDia.length);
@@ -65,9 +65,32 @@
         $scope.isSet(0);
        //mostrar reservas usuario
         
+        ActividadesService.getActividades().then(function(actividades){
+            $scope.actividades = actividades;
+            console.log(actividades);
+        });
+        
         var usuario = JSON.parse(sessionStorage.getItem('usuarioPhotoChallenge'));
-        ReservasService.getUserReservas(usuario.objectId).then(function(reserva){
-        $scope.Reservas = reserva;   
+        ReservasService.getUserReservas(usuario.objectId).then(function(reservas){
+            
+        
+           for(var n=0; n<reservas.length;n++){
+               console.log(reservas[n]);
+               for(var i=0; i<$scope.actividades.length; i++){
+                  if($scope.actividades[i].id === reservas[n].attributes.actividadId.id]){
+                      //se crea una propiedad ad hoc para la reserva con todos los datos de la actividad
+                      reservas[n].actividad = $scope.actividades[i];
+                  }
+               }
+          }
+            
+            
+            
+            $scope.Reservas = reservas;   
+            
+            
+            
+            
         });
                                               
                                             

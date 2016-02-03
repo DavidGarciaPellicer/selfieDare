@@ -5,15 +5,17 @@
         this.getUserReservas = function(userId){
 			var d = $q.defer();
 
-			// Initialise Query
+			// Consultamos primero las reservas
 			var Reservas = Parse.Object.extend("Reservas");
 			var reservasQuery = new Parse.Query(Reservas);
 			reservasQuery.equalTo("userId", userId);
             reservasQuery.descending('createdAt');
 
-			// Perform the query
+			// Consulta de las reservas del usuario
 			reservasQuery.find({
 				success: function (reservas) {
+                    //una vez tenemos las reservas queremos conocer tb los datos de la actividad
+              
 					d.resolve(reservas);
 				},
                 error: function (reservas, error){

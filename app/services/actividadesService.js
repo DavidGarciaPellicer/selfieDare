@@ -1,6 +1,11 @@
 (function() {
     var ActividadesService = function($q) {
         
+        var actividades = [];
+        
+        this.getLocalActividades = function(){
+            return actividades;
+        },
         //devuelve las actividades de la semana actual
         this.getWeekActividades = function(){
             
@@ -45,6 +50,7 @@
 				success: function (actividades) {
 					console.debug(actividades);
 					// Finished
+                    this.actividades = actividades;
 					d.resolve(actividades);
 				}
 			});
