@@ -20,13 +20,13 @@
                for(var n=0; n<reservas.length;n++){
                    console.log('Reserva: '+reservas[n].attributes);
                    for(var i=0; i<$scope.actividades.length; i++){
-                      if($scope.actividades[i].id === reservas[n].attributes.actividadId.id){
+                      if($scope.actividades[i].id === reservas[n].attributes.actividadId){
                           //se crea una propiedad ad hoc para la reserva con todos los datos de la actividad
-                          reservas[n].actividad = $scope.actividades[i];
+                          reservas[n].actividad = $scope.actividades[i].attributes;
                       }
                    }
               }
-                $scope.Reservas = reservas;              
+                $scope.Reservas = reservas;    
             });
 
         });

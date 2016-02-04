@@ -1,3 +1,12 @@
-<div ng-repeat="reserva in Reservas">RESERVAS
-    <p>{{reserva.createdAt}}</p>
+<div class="card-columns">
+<div class="card" ng-repeat="reserva in Reservas">
+  <div class="card card-block text-xs-center card-info">
+      {{reserva.actividad.type | uppercase}}
+  </div>
+  <div class="card-block">
+
+    <p class="card-text">{{reserva.createdAt|date:'longDate'}}</p>
+    
+  </div>
+</div>
 </div>
