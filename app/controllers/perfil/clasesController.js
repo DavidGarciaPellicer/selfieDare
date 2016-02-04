@@ -1,19 +1,11 @@
 (function() {
     
     var ClasesController = function ($scope, $log, $window, UserService, ActividadesService, $location, ReservasService) {
-
-        
-    UserService.getMonitores().then(function(monitores){
-            $scope.monitores = monitores;
-    });
     
-    var tiposactividades = [];
+   
     ActividadesService.getTipoActividades().then(function(tipos){
-            tiposactividades = tipos;
-    });
-    
-    ActividadesService.getWeekActividades().then(function(actividades){
-        actividadesPorDia = [];
+        ActividadesService.getWeekActividades().then(function(actividades){
+        var actividadesPorDia = [];
         var diaInicio = actividades[0].attributes.date.getDay(),
             contador = 0;
         
@@ -29,26 +21,29 @@
               var monitor = getMonitorForActividad(act.attributes.monitor.id);
               act.monitor = monitor; 
             
-            for(var n=0;n<tiposactividades.length;n++){
-                if(tiposactividades[n].attributes.title === act.attributes.type){
-                    act.tipoactividad = tiposactividades[n].attributes;
+            for(var n=0;n<tipos.length;n++){
+                if(tipos[n].attributes.title === act.attributes.type){
+                    act.tipoactividad = tipos[n].attributes;
                     break;
                 }
-            }
-            
-              actividadesPorDia[contador].push(act);   
+            }     
+              actividadesPorDia[contador].push(act); 
         });
         
         $scope.actividadesPorDia = actividadesPorDia;
             console.log('actividadesPorDia: '+actividadesPorDia);
+        });
     });
         
         function getMonitorForActividad(id){
             var mon;
-            angular.forEach($scope.monitores, function(monitor){
-               if(monitor.id === id) mon = monitor; 
+            UserService.getMonitores().then(function(monitores){
+                $scope.monitores = monitores;
+                 angular.forEach(monitores, function(monitor){
+                    if(monitor.id === id) mon = monitor; 
+                 });
+                return mon.attributes;
             });
-            return mon.attributes;
         }
         
           $scope.tabSelected = 0;
@@ -69,6 +64,7 @@
         });
         
         $scope.realizarReserva = function(idActividad, horario){
+                      
             ReservasService.createReserva(idActividad, horario, UserService.getUsuarioSesion().objectId).then(function(correcto){
                 alert(correcto);
             });
