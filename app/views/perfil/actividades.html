@@ -4,17 +4,21 @@ DESDE EL ACTUAL HASTA LOS 7 DÍAS POSTERIORES -->
           <ul class="nav nav-pills">
             <li ng-repeat="dia in actividadesPorDia" ng-class="{active:tab.isSet($index)}"><a href ng-click="setTab($index)">{{dia[0].attributes.date | date:'EEEE'}}</a></li>
               
-              <!--LISTAR TODAS LAS ACTIVIDADES DEL DÍA AQUI-->
-              
-              
-              
-       
-              
+              <!--LISTAR TODAS LAS ACTIVIDADES DEL DÍA AQUI-->            
         </ul>
-        
-        <div ng-repeat="actividad in actividadesPorDia[tabSelected]">
-       
-             <h2>{{actividad.attributes.type}}</h2>
-            <p>Plazas disponibles: {{actividad.attributes.disponibles}}</p>
-             <p>Monitor: {{actividad.monitor.name}}</p>
+
+        <div class="card-columns">
+            <div class="card card-default text-xs-center" ng-repeat="actividad in actividadesPorDia[tabSelected]">
+              <div class="card-block card-info">
+                <h4 class="card-title">{{actividad.attributes.date | date:'HH:mm'}}</h4>
+                <h6 class="card-subtitle text-muted" style="color:white">{{actividad.attributes.type}}</h6>
+              </div>
+              <img src="{{actividad.tipoactividad.imagen._url}}" alt="Card image" style="width:150px">
+              <div class="card-block card-primary">
+            <p class="card-text" style="color:white">Plazas disponibles: {{actividad.attributes.disponibles}}</p>
+             <h6 class="card-text" style="color:white">Monitor: {{actividad.monitor.name}}</h6>
+                <a ng-click="realizarReserva(actividad.id, actividad.attributes.date)" class="btn btn-success">Reservar</a>
+              </div>
+            </div>
         </div>
+

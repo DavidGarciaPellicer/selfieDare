@@ -80,46 +80,6 @@
 			return d.promise;
             
         }, 
-            
-        //devuelve todas las actividades
-        this.quedanPlazasActividad = function(actividadId){
-
-			var d = $q.defer();
-
-			// Initialise Query
-			var Actividad = Parse.Object.extend("Actividad");
-			var actividadQuery = new Parse.Query(Actividad);
-            actividadQuery.equalTo("objectId", actividadId);
-
-			// Perform the query
-			actividadQuery.find({
-				success: function (actividad) {
-                    if(actividad.disponibles>0){
-                        
-                        //si hay plazas disponibles hay que restar una plaza a las disponibles
-                        /*
-                        this.save(null, {
-                            success: function (act) {
-                                d.resolve(self.user);
-                            },
-                            error: function (user, error) {
-                                d.reject(error);
-                            }
-                        });
-
-                        return d.promise;
-                        */
-                        d.resolve(true);
-                    }else{
-                        d.resolve(false);
-                    }
-					
-				}
-			});
-
-			return d.promise;
-            
-        }, 
         
         //no se emplea de momento, pero averigua los días del mes actual
         this.getDaysInMonth = function(anyDateInMonth){
