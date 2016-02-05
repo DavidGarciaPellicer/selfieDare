@@ -20,13 +20,17 @@
                for(var n=0; n<reservas.length;n++){
                    console.log('Reserva: '+reservas[n].attributes);
                    for(var i=0; i<$scope.actividades.length; i++){
+<<<<<<< HEAD
                       if(actividades[i].id === reservas[n].attributes.actividadId){
+=======
+                      if($scope.actividades[i].id === reservas[n].attributes.actividadId){
+>>>>>>> c22508feaee9910be52dd7e98b927bf878677ec2
                           //se crea una propiedad ad hoc para la reserva con todos los datos de la actividad
-                          reservas[n].actividad = $scope.actividades[i];
+                          reservas[n].actividad = $scope.actividades[i].attributes;
                       }
                    }
               }
-                $scope.Reservas = reservas;              
+                $scope.Reservas = reservas;    
             });
 
         });
