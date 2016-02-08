@@ -3,7 +3,9 @@ var app = angular.module('RetameApp', [
   'parse-angular',
   'parse-angular.enhance',
    'ngFileUpload',
-    'ui.router'
+    'ui.router',
+    'ui.bootstrap',
+    'ngAnimate'
 ]);
 
   //'parse-angular',

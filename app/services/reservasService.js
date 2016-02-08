@@ -4,11 +4,15 @@
         //devuelve las reervas de un usuario          
         this.getUserReservas = function(userId){
 			var d = $q.defer();
-
+            var User = Parse.Object.extend("User");
+            var user = new User();
+            user.id = userId;
 			// Consultamos primero las reservas
 			var Reservas = Parse.Object.extend("Reservas");
 			var reservasQuery = new Parse.Query(Reservas);
-			reservasQuery.equalTo("userId", userId);
+            reservasQuery.include("actividad.tipo");
+			reservasQuery.equalTo("userId", user);
+            reservasQuery.greaterThan('horario',new Date());
             reservasQuery.descending('createdAt');
 
 			// Consulta de las reservas del usuario
@@ -30,21 +34,26 @@
             
                 
         this.createReserva = function(idActividad, horario, idUser) {
-            var d = $q.defer();             
+            var d = $q.defer();    
+            
+            var Actividad = Parse.Object.extend("Actividad");
+            var actividad = new Actividad();
+            actividad.id = idActividad;
+            var User = Parse.Object.extend("User");
+            var user = new User();
+            user.id = idUser;
             
             var Reserva = Parse.Object.extend("Reservas");
                 
                 var reserva = new Reserva();
-                reserva.set('actividadId', idActividad);
-                reserva.set('userId', idUser);
+                reserva.set('actividad', actividad);
+                reserva.set('userId', user);
                 reserva.set('horario', horario);
                 reserva.save(null, {
 				success: function (reserva) {
-					console.log("Reserva realizada");
-					d.resolve("ok");
+					d.resolve(reserva);
 				},
 				error: function (item, error) {
-					console.log("Error en la reserva");
 					d.reject(error);
 				}
 			});

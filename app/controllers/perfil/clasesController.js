@@ -1,9 +1,8 @@
 (function() {
     
-    var ClasesController = function ($scope, $log, $window, UserService, ActividadesService, $location, ReservasService) {
+    var ClasesController = function ($scope, $log, $window, UserService, ActividadesService, $location, ReservasService,$state,$uibModal) {
     
    
-    ActividadesService.getTipoActividades().then(function(tipos){
         ActividadesService.getWeekActividades().then(function(actividades){
         var actividadesPorDia = [];
         var diaInicio = actividades[0].attributes.date.getDay(),
@@ -16,35 +15,14 @@
            }
             if(actividadesPorDia.length<=contador){
                 actividadesPorDia.push([]);
-            }
-              //colocamos los datos del monitor en la actividad
-              var monitor = getMonitorForActividad(act.attributes.monitor.id);
-              act.monitor = monitor; 
-            
-            for(var n=0;n<tipos.length;n++){
-                if(tipos[n].attributes.title === act.attributes.type){
-                    act.tipoactividad = tipos[n].attributes;
-                    break;
-                }
-            }     
+            }    
               actividadesPorDia[contador].push(act); 
         });
         
         $scope.actividadesPorDia = actividadesPorDia;
             console.log('actividadesPorDia: '+actividadesPorDia);
         });
-    });
-        
-        function getMonitorForActividad(id){
-            var mon;
-            UserService.getMonitores().then(function(monitores){
-                $scope.monitores = monitores;
-                 angular.forEach(monitores, function(monitor){
-                    if(monitor.id === id) mon = monitor; 
-                 });
-                return mon.attributes;
-            });
-        }
+
         
           $scope.tabSelected = 0;
         
@@ -63,17 +41,61 @@
             $scope.actividades = actividades;
         });
         
-        $scope.realizarReserva = function(idActividad, horario){
-                      
-            ReservasService.createReserva(idActividad, horario, UserService.getUsuarioSesion().objectId).then(function(correcto){
-                alert(correcto);
+        function realizarReserva(idActividad, horario){
+            ActividadesService.consultarPlazas(idActividad).then(function (actividad){
+                if(actividad.reservaHecha){
+                    ReservasService.createReserva(idActividad, horario, UserService.getUsuarioSesion().objectId).then(function(reserva){
+                        
+                                var modalInstance = $uibModal.open({
+                                  animation: true,
+                                  templateUrl: '/app/views/perfil/modal/reservaRealizada.html',
+                                  controller: 'ReservaRealizadaController'
+                                });
+
+                                modalInstance.result.then(function () {
+                                }, function () {
+                                  $log.info('Modal dismissed at: ' + new Date());
+                                });              
+                        
+                       $state.reload();
+                    });
+                }else{
+                    alert("No quedan plazas disponibles");
+                }
             });
+
         };
-                                                                          
         
+    $scope.actividad = {titulo:'asasas','horario':'10-02-2016'};
+        
+      $scope.open = function (idActividad, titulo, horario) {    
+        $scope.actividad = {
+            'idActividad': idActividad,
+            'titulo': titulo,
+            'horario': horario
+        };
+          
+        var modalInstance = $uibModal.open({
+          animation: true,
+          templateUrl: '/app/views/perfil/modal/reservaModal.html',
+          controller: 'ReservaModalController',
+          resolve: {
+            actividad: function () {
+              return $scope.actividad;
+            }
+          }
+        });
+
+        modalInstance.result.then(function (actividad) {
+          realizarReserva(actividad.idActividad, actividad.horario);
+        }, function () {
+          $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+       
     };
     
-    ClasesController.$inject = ['$scope', '$log', '$window','UserService','ActividadesService','$location','ReservasService'];
+    ClasesController.$inject = ['$scope', '$log', '$window','UserService','ActividadesService','$location','ReservasService','$state','$uibModal'];
 
     angular.module('RetameApp')
       .controller('ClasesController', ClasesController);

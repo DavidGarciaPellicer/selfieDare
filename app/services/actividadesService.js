@@ -20,6 +20,9 @@
             // Initialise Query
 			var Actividad = Parse.Object.extend("Actividad");
 			var actividadQuery = new Parse.Query(Actividad);
+            actividadQuery.include("monitor");
+            actividadQuery.include("tipo");
+            
             actividadQuery.greaterThan('date',fechainicio);
             actividadQuery.lessThan('date',fechafinal);
             actividadQuery.ascending('date');
@@ -81,8 +84,7 @@
             
         }, 
             
-        //devuelve todas las actividades
-        this.quedanPlazasActividad = function(actividadId){
+        this.consultarPlazas = function(actividadId){
 
 			var d = $q.defer();
 
@@ -92,30 +94,24 @@
             actividadQuery.equalTo("objectId", actividadId);
 
 			// Perform the query
-			actividadQuery.find({
-				success: function (actividad) {
-                    if(actividad.disponibles>0){
-                        
-                        //si hay plazas disponibles hay que restar una plaza a las disponibles
-                        /*
-                        this.save(null, {
-                            success: function (act) {
-                                d.resolve(self.user);
-                            },
-                            error: function (user, error) {
-                                d.reject(error);
-                            }
-                        });
-
-                        return d.promise;
-                        */
-                        d.resolve(true);
-                    }else{
-                        d.resolve(false);
-                    }
-					
-				}
-			});
+			actividadQuery.first({
+				success: function (Actividad) {
+                      Actividad.save(null, {
+                          
+                        success: function (actividad) {
+                            //si hay plazas disponibles restamos una
+                            if(actividad.attributes.disponibles>0){
+                                actividad.set("disponibles", actividad.attributes.disponibles - 1);
+                                actividad.save();
+                                actividad.reservaHecha = true;
+                            }else actividad.reservaHecha = false;
+                        }
+                      }).then(function (actividad){
+                           d.resolve(actividad);	
+                      });           
+                }
+            });       
+				
 
 			return d.promise;
             
