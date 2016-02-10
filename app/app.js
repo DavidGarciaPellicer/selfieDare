@@ -54,6 +54,10 @@ var app = angular.module('RetameApp', [
               url: "/upload",
               templateUrl: 'app/views/imageUpload.html',
               controller: 'ImageUploadController'
+            })
+            .state('consejos', {
+              url: "/consejos",
+              templateUrl: 'app/views/consejos.html'
             });
         
          Parse.initialize("80UaJ4k9Pz13b3T7Dlst5wKMyUiIVBUcMZBTojnb", "y1bDIOOUYDKOMkjSNxmb34wEr9qTWIIjVNIzIUiv");

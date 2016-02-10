@@ -7,9 +7,7 @@
             
             //Solo se van a listar las actividades en las que el usuario no ha reservado
             //Para las que
-            ReservasService.getUserReservas().then(function (){
-                
-            });
+         
             
             
             
