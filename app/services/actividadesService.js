@@ -115,7 +115,36 @@
 
 			return d.promise;
             
-        }, 
+        },
+            
+         this.addPlaza = function(actividadId){
+
+			var d = $q.defer();
+
+			// Initialise Query
+			var Actividad = Parse.Object.extend("Actividad");
+			var actividadQuery = new Parse.Query(Actividad);
+            actividadQuery.equalTo("objectId", actividadId);
+
+			// Perform the query
+			actividadQuery.first({
+				success: function (Actividad) {
+                      Actividad.save(null, {
+                          
+                        success: function (actividad) {
+                                actividad.set("disponibles", actividad.attributes.disponibles + 1);
+                                actividad.save();
+                        }
+                      }).then(function (actividad){
+                           d.resolve();	
+                      });           
+                }
+            });       
+				
+
+			return d.promise;
+            
+        },
         
         //no se emplea de momento, pero averigua los días del mes actual
         this.getDaysInMonth = function(anyDateInMonth){

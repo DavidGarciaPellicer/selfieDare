@@ -13,6 +13,29 @@
     text-shadow: 2px 2px 6px black;
 }
 
+[ui-view].ng-leave {
+  animation: fadeOut 1s; 
+}
+
+[ui-view].ng-enter {
+  animation: fadeIn 1s;
+}
+
+.card-columns .ng-leave {
+  animation: fadeOut 0.5s; 
+}
+
+.card-columns .ng-enter {
+  animation: fadeIn 2s;
+}
+
+.popover-title{
+    background-color: #6B5F5F;
+}
+
+.popover-content{
+    background-color: #111;
+}
 
 /***
 User Profile Sidebar by @keenthemes

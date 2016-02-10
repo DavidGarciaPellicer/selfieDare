@@ -2,13 +2,24 @@
 DESDE EL ACTUAL HASTA LOS 7 DÍAS POSTERIORES -->
             <h2>CLASES</h2>  
           <ul class="nav nav-pills">
-            <li ng-repeat="dia in actividadesPorDia" ng-class="{active:tab.isSet($index)}"><a href ng-click="setTab($index)">{{dia[0].attributes.date | date:'EEEE' |uppercase}}</a></li>
+            <li ng-repeat="dia in actividadesPorDia"
+                ng-class="{active: $index == 0}" 
+                class="fx-zoom-normal"
+                >
+                <a href ng-init="setTab(tabInitial)"
+                   ng-click="setTab($index)"
+                   ngfx-pulse="x == $index"
+                   ngfx-speed="medium"
+                   >
+                    {{dia[0].attributes.date | date:'EEEE' |uppercase}}
+                </a>
+              </li>
               
               <!--LISTAR TODAS LAS ACTIVIDADES DEL DÍA AQUI-->            
         </ul>
 
         <div class="card-columns">
-            <div class="card card-default text-xs-center" ng-repeat="actividad in actividadesPorDia[tabSelected]">
+            <div class="card card-default text-xs-center fx-fade-up" ng-repeat="actividad in actividadesPorDia[tabSelected]">
               <div class="card-block card-info">
                 <h4 class="card-title">{{actividad.attributes.date | date:'HH:mm'}}</h4>
                 <h6 class="card-subtitle text-muted" style="color:white">{{actividad.attributes.type}}</h6>

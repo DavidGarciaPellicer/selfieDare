@@ -1,8 +1,8 @@
 (function() {
     
-    var ReservaRealizadaController = function ($scope, $uibModalInstance) {
+    var ReservaRealizadaController = function ($scope, $uibModalInstance, param) {
 
-    $scope.msg = 'Reserva realizada';
+    $scope.msg = param.msg;
 
       $scope.ok = function () {
         $uibModalInstance.close();
@@ -14,7 +14,7 @@
 
     };
     
-    ReservaRealizadaController.$inject = ['$scope', '$uibModalInstance'];
+    ReservaRealizadaController.$inject = ['$scope', '$uibModalInstance', 'param'];
 
     angular.module('RetameApp')
       .controller('ReservaRealizadaController', ReservaRealizadaController);

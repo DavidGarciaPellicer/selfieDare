@@ -3,8 +3,6 @@
     
     var MainController = function ($scope,  
                                     $location) {
-        
-
     };
     
     MainController.$inject = ['$scope', '$location'];

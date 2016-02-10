@@ -4,19 +4,19 @@
                                      $log, 
                                      $window, 
                                      UserService,
-                                    $location) {
+                                    $location,
+                                    $state) {
         
-        console.log($location);
        $scope.login = function(form){
                UserService.login($scope.form.username, $scope.form.password).then(function(user){
                     UserService.guardarUsuarioSesion(user);
                    //redirección a página principal
-                   $location.path('/perfil');
+                   $state.go('perfil.actividades');
                });
        }
     };
     
-    LoginController.$inject = ['$scope', '$log', '$window','UserService','$location'];
+    LoginController.$inject = ['$scope', '$log', '$window','UserService','$location', '$state'];
 
     angular.module('RetameApp')
       .controller('LoginController', LoginController);

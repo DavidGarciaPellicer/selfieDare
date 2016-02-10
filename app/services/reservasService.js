@@ -1,7 +1,7 @@
 (function() {
     var ReservasService = function($q) {
         
-        //devuelve las reervas de un usuario          
+        //devuelve las reservas de un usuario          
         this.getUserReservas = function(userId){
 			var d = $q.defer();
             var User = Parse.Object.extend("User");
@@ -58,6 +58,26 @@
 				}
 			});
             
+                 return d.promise;      
+        },
+            
+        this.deleteReserva = function(idReserva) {
+            var d = $q.defer();    
+            
+            var Reservas = Parse.Object.extend("Reservas");  
+             var reservasQuery = new Parse.Query(Reservas);
+            reservasQuery.get(idReserva, {
+              success: function(reserva) {
+                // The object was retrieved successfully.
+                reserva.destroy({});
+                d.resolve(reserva.attributes.actividad.id);
+              },
+              error: function(object, error) {
+                // The object was not retrieved successfully.
+                // error is a Parse.Error with an error code and description.
+                  d.reject(error);
+              }
+            });
                  return d.promise;      
         }
     };

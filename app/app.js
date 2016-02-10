@@ -1,3 +1,4 @@
+
 var app = angular.module('RetameApp', [
   'ngRoute',
   'parse-angular',
@@ -5,7 +6,8 @@ var app = angular.module('RetameApp', [
    'ngFileUpload',
     'ui.router',
     'ui.bootstrap',
-    'ngAnimate'
+    'ngAnimate',
+    '720kb.fx'
 ]);
 
   //'parse-angular',
@@ -39,7 +41,7 @@ var app = angular.module('RetameApp', [
               controller: 'ProfileController'
             })
             .state('perfil.actividades', {
-              url: "/actividades",
+              url: "/actividades?tabId",
               templateUrl: 'app/views/perfil/actividades.html',
               controller: 'ClasesController'
             })

@@ -7,11 +7,9 @@
                  $location.path('/login');
                        
             $scope.uploadPic = function(file) {
-                
                 UserService.saveImage(file, $scope.form).then(function(){
                     alert('Imagen guardada');
-                });
-                
+                });             
             }
             
         };
