@@ -57,7 +57,8 @@ var app = angular.module('RetameApp', [
             })
             .state('consejos', {
               url: "/consejos",
-              templateUrl: 'app/views/consejos.html'
+              templateUrl: 'app/views/consejos.html',
+              controller: 'CarouselController'
             });
         
          Parse.initialize("80UaJ4k9Pz13b3T7Dlst5wKMyUiIVBUcMZBTojnb", "y1bDIOOUYDKOMkjSNxmb34wEr9qTWIIjVNIzIUiv");
