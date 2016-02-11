@@ -37,19 +37,18 @@
     background-color: #111;
 }
 
-#slides_control > div{
-  height: 200px;
-}
-img{
-  margin:auto;
-  width: 400px;
-}
-#slides_control {
-  position:absolute;
-  width: 400px;
-  left:50%;
-  top:20px;
- margin-left:-200px;
+.flex-caption {
+ margin-top: -200px;
+  width: 100%;
+  padding: 2%;
+  left: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.2);
+  color: #fff;
+  text-shadow: 2px 2px 8px black;
+    text-align: center;
+  font-size: 30px;
+  line-height: 50px;
 }
 
 /***

@@ -7,7 +7,9 @@ var app = angular.module('RetameApp', [
     'ui.router',
     'ui.bootstrap',
     'ngAnimate',
-    '720kb.fx'
+    '720kb.fx',
+    'bc.Flickity',
+    'angular-flexslider'
 ]);
 
   //'parse-angular',
