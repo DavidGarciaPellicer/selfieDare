@@ -5,31 +5,48 @@
    
         ActividadesService.getWeekActividades().then(function(actividades){
             
-            //Solo se van a listar las actividades en las que el usuario no ha reservado
-            //Para las que
+            //Se van a listar todas las actividades 
+            //Pero en las que el usuario ya ha reservado crearemos una propiedad indicándolo
+            //Esta propiedad nos servirá luego para mostrar una actividad con un estilo u otro según se haya reservado.Miramos primero las reservas del usuario
          
+        var reservas;
+        var userId = UserService.getUsuarioSesion().objectId; 
+        ReservasService.getUserReservas(userId).then(function (res){
+            reservas = res;
+              
+            //luego separamos las actividades por  dias
+            var actividadesPorDia = [];
+            var diaInicio = actividades[0].attributes.date.getDay(),
+                contador = 0;
+
+            angular.forEach(actividades,function(act){
+               if(diaInicio !== act.attributes.date.getDay()){
+                   contador++;
+                   diaInicio = act.attributes.date.getDay();
+               }
+                if(actividadesPorDia.length<=contador){
+                    actividadesPorDia.push([]);
+                }    
+                
+            //comprobamos si alguna actividad está reservada. Si es así la propiedad reservada se pone a true    
+                var reservada = false;
+                for(var i=0; i< reservas.length; i++){
+                    if(act.id === reservas[i].attributes.actividad.id)
+                        reservada = true;
+                }
+                
+                act.reservada = reservada;
+
+                //Añadimos la actividad al array semanal
+
+                      actividadesPorDia[contador].push(act);         
+            });
             
+
+            $scope.actividadesPorDia = actividadesPorDia;
+                console.log('actividadesPorDia: '+actividadesPorDia);
+            });
             
-            
-            
-            
-        var actividadesPorDia = [];
-        var diaInicio = actividades[0].attributes.date.getDay(),
-            contador = 0;
-        
-        angular.forEach(actividades,function(act){
-           if(diaInicio !== act.attributes.date.getDay()){
-               contador++;
-               diaInicio = act.attributes.date.getDay();
-           }
-            if(actividadesPorDia.length<=contador){
-                actividadesPorDia.push([]);
-            }    
-              actividadesPorDia[contador].push(act); 
-        });
-        
-        $scope.actividadesPorDia = actividadesPorDia;
-            console.log('actividadesPorDia: '+actividadesPorDia);
         });
         
        $scope.setTab = function (tabId) {
