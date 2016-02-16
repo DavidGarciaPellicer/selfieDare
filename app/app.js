@@ -9,7 +9,8 @@ var app = angular.module('RetameApp', [
     'ngAnimate',
     '720kb.fx',
     'bc.Flickity',
-    'angular-flexslider'
+    'angular-flexslider',
+    'googlechart'
 ]);
 
   //'parse-angular',
@@ -51,6 +52,11 @@ var app = angular.module('RetameApp', [
               url: "/reservas",
               templateUrl: 'app/views/perfil/reservas.html',
               controller: 'ReservasController'
+            })
+            .state('perfil.calorias', {
+              url: "/calorias",
+              templateUrl: 'app/views/perfil/calorias.html',
+              controller: 'CaloriasController'
             })
             .state('upload', {
               url: "/upload",

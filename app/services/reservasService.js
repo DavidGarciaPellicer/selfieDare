@@ -1,10 +1,6 @@
 (function() {
     var ReservasService = function($q) {
         
-       // var reservastotales = null;
-        
-        this.reservastotales = null,
-        
         //devuelve las reservas de un usuario          
         this.getUserReservas = function(userId){
 			var d = $q.defer();
@@ -23,7 +19,6 @@
 			reservasQuery.find({
 				success: function (reservas) {
             //una vez tenemos las reservas queremos conocer tb los datos de la actividad
-                    this.reservastotales = reservas;
 					d.resolve(reservas);
 				},
                 error: function (reservas, error){

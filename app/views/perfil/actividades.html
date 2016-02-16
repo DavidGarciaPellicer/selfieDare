@@ -24,7 +24,8 @@ DESDE EL ACTUAL HASTA LOS 7 DÍAS POSTERIORES -->
                 <h4 class="card-title">{{actividad.attributes.date | date:'HH:mm'}}</h4>
                 <h6 class="card-subtitle text-muted" style="color:white">{{actividad.attributes.tipo.attributes.title}}</h6>
               </div>
-              <img ng-src="{{actividad.reservada?'http://files.parsetfss.com/5d27ade1-3065-494b-bffa-13397caaf664/tfss-9c5fcfcd-d7fb-4234-bef8-842eb6a1567f-reservada.png' :actividad.attributes.tipo.attributes.imagen._url}}"
+              <img ng-src="{{actividad.reservada?
+                           'http://files.parsetfss.com/5d27ade1-3065-494b-bffa-13397caaf664/tfss-9c5fcfcd-d7fb-4234-bef8-842eb6a1567f-reservada.png' :actividad.attributes.tipo.attributes.imagen._url}}"
                    alt="Card image" style="width:150px">
               <div class="card-block card-primary">
             <p class="card-text" style="color:white">Plazas disponibles: {{actividad.attributes.disponibles}}</p>
@@ -34,4 +35,3 @@ DESDE EL ACTUAL HASTA LOS 7 DÍAS POSTERIORES -->
               </div>
             </div>
         </div>
-

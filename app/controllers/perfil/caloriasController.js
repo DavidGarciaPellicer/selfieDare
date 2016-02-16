@@ -1,23 +1,53 @@
 (function() {
     
-    var CaloriasController = function ($scope, UserService, ActividadesService, ReservasService, $state) {
-        
-        var userId = UserService.getUsuarioSesion().id;
-        var reservas = ReservasService.reservas;
+    var CaloriasController = function ($scope, $log, UserService, ActividadesService, ReservasService, $state) {
+        var total = 0;
+        var userId = UserService.getUsuarioSesion();
+        var reservas = ReservasService.getUserReservas(userId.objectId).then(function (reservas){
+           
+             for(var i=0; i<reservas.length; i++){
+                 total += parseInt(reservas[i].attributes.actividad.attributes.calorias);
+             }
+            
+             $scope.chartObject = {};
+            var quedan = parseInt(userId.objetivo) - total;
     
-    function caloriasTotales(reservas){
-        var calorias = 0;
-        for(var i=0; i<reservas.length; i++){
-            calorias += parseInt(reservas[i].attributes.actividad.attributes.calorias);
-        }
-        return calorias;
-    }    
+    $scope.chartObject.type = "PieChart";
+    
+    $scope.onions = [
+        {v: "Consumidas"},
+        {v: total},
+    ];
+
+    $scope.chartObject.data = {"cols": [
+        {id: "t", label: "Topping", type: "string"},
+        {id: "s", label: "Slices", type: "number"}
+    ], "rows": [
+        {c: $scope.onions},
+        {c: [
+            {v: "Objetivo"},
+            {v: quedan}
+        ]}
+    ]};
+
+    $scope.chartObject.options = {
+        'title': 'Esta semana llevas consumidas '+total+' kcal. Te quedan '+quedan+' kcal para tu objetivo. Ánimo!!!'
+    };
+        
+        
+            
+});
+        
+        
+        
+        
+        
         
     };
     
-    CaloriasController.$inject = ['$scope', '$log','UserService','ActividadesService','$location','ReservasService','$state'];
+    CaloriasController.$inject = ['$scope', '$log', 'UserService','ActividadesService','ReservasService', '$state'];
 
     angular.module('RetameApp')
-      .controller('ReservasController', CaloriasController);
+      .controller('CaloriasController', CaloriasController);
     
 }());
