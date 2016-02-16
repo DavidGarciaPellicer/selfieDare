@@ -1,6 +1,6 @@
 (function() {
     
-    var ReservasController = function ($scope, $log, $window, UserService, ActividadesService, $location, ReservasService, $uibModal) {
+    var ReservasController = function ($scope, $log, $window, UserService, ActividadesService, $location, ReservasService, $uibModal, $state) {
 
         ReservasService.getUserReservas(UserService.getUsuarioSesion().objectId).then(function(reservas){
                 $scope.reservas = reservas;   
@@ -21,15 +21,14 @@
                             }    
                     });
                         //Se recarga la página
-                       $state.reload();
-                  
+                       $state.reload(); 
              });
           });  
         };
 
     };
     
-    ReservasController.$inject = ['$scope', '$log', '$window','UserService','ActividadesService','$location','ReservasService', '$uibModal'];
+    ReservasController.$inject = ['$scope', '$log', '$window','UserService','ActividadesService','$location','ReservasService', '$uibModal','$state'];
 
     angular.module('RetameApp')
       .controller('ReservasController', ReservasController);

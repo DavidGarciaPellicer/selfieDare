@@ -22,13 +22,15 @@ DESDE EL ACTUAL HASTA LOS 7 DÍAS POSTERIORES -->
             <div class="card card-default text-xs-center fx-fade-up" ng-repeat="actividad in actividadesPorDia[tabSelected]">
               <div class="card-block card-info">
                 <h4 class="card-title">{{actividad.attributes.date | date:'HH:mm'}}</h4>
-                <h6 class="card-subtitle text-muted" style="color:white">{{actividad.attributes.type}}</h6>
+                <h6 class="card-subtitle text-muted" style="color:white">{{actividad.attributes.tipo.attributes.title}}</h6>
               </div>
-              <img src="{{actividad.attributes.tipo.attributes.imagen._url}}" alt="Card image" style="width:150px">
+              <img ng-src="{{actividad.reservada?'http://files.parsetfss.com/5d27ade1-3065-494b-bffa-13397caaf664/tfss-9c5fcfcd-d7fb-4234-bef8-842eb6a1567f-reservada.png' :actividad.attributes.tipo.attributes.imagen._url}}"
+                   alt="Card image" style="width:150px">
               <div class="card-block card-primary">
             <p class="card-text" style="color:white">Plazas disponibles: {{actividad.attributes.disponibles}}</p>
+             <p class="card-text" style="color:black">Calorías: {{actividad.attributes.calorias}}</p>
              <h6 class="card-text" style="color:white">Monitor: {{actividad.attributes.monitor.attributes.name}}</h6>
-                <a ng-click="open(actividad.id, actividad.attributes.tipo.attributes.title, actividad.attributes.date)" class="btn btn-success">Reservar</a>
+                <a ng-click="open(actividad.id, actividad.attributes.tipo.attributes.title, actividad.attributes.date)" class="btn btn-success" ng-hide="actividad.reservada">Reservar</a>
               </div>
             </div>
         </div>
