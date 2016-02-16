@@ -4,24 +4,25 @@
 <div class="row">
 <div class="col-xs-12 col-md-6" ng-repeat="reserva in reservas">
 
-    <div class="card">
-  <div class="card text-center card-info">
-      {{reserva.attributes.actividad.attributes.tipo.attributes.title | uppercase}}
-  </div>
-
-      <ul class="list-group">
-          <li class="list-group-item">
-            <span class="badge">{{reserva.attributes.actividad.attributes.sala}}</span>
-            Sala
-          </li>
-                  <li class="list-group-item">
-            <span class="badge">{{reserva.attributes.actividad.attributes.date |date:'longDate'}}</span>
-            Fechas
-          </li>
-      </ul>
-    <p class="card-text"></p>
+    <div class="panel panel-info">
+  <!-- Default panel contents -->
+  <div class="panel-heading">{{reserva.attributes.actividad.attributes.tipo.attributes.title | uppercase}}</div>
+  <!-- Table -->
+  <table class="table table-striped">
+    <tr>
+      <td>Sala</td>
+      <td>{{reserva.attributes.actividad.attributes.sala}}</td>      
+    </tr>
+      <tr>
+      <td>Fecha</td>
+      <td>{{reserva.attributes.actividad.attributes.date |date:'longDate'}}</td>      
+    </tr>
+  </table>
+         <div class="panel-footer text-center"> <a ng-click="cancelar(reserva.id)" class="btn btn-danger ">Cancelar</a></div>
+        
+</div>
      
-      <a ng-click="cancelar(reserva.id)" class="btn btn-danger">Cancelar</a>
+     
   </div>
 
 </div>
