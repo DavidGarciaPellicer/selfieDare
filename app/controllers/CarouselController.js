@@ -16,37 +16,37 @@
             {
               image: '/images/avatars/chicaBebiendo.jpg',
               id:3,
-              text: 'Necesitas entre 100 y 200 ml de agua simple por cada 20 minutos de ejercicio para mantenerte hidratada'
+              text: 'Necesitas entre 100 y 200 ml de agua simple por cada 20 minutos de ejercicio para mantenerte hidratado'
             },
             {
               image: '/images/avatars/alimentacion.jpg',
               id:4,
-              text: 'kjkjkjkjkjkj'
+              text: 'Si no existe la costumbre de desayunar se recomienda incorporar el desayuno en forma progresiva, para evitar intolerancia digestiva, pero no es razonable su eliminación.'
             },
                           {
               image: '/images/avatars/ensaladaFruta.jpg',
               id:5,
-              text: 'kjkjkjkjkjkj'
+              text: 'Junto a las uvas los cítricos son otra importante fuente de antioxidantes necesarios para el deportista, ya que contienen altas dosis de vitamina C.'
             },
                           {
               image: '/images/avatars/ejercicioComida.jpg',
               id:6,
-              text: 'kjkjkjkjkjkj'
+              text: 'Se recomienda consumir las grasas de origen vegetal, como, aceite de oliva, maíz, girasol, nueces, etc.'
             },
                           {
               image: '/images/avatars/ejercicio.jpg',
               id:7,
-              text: 'kjkjkjkjkjkj'
+              text: 'Se aconseja realizar deporte a primera o a última hora del día.'
             },
                           {
               image: '/images/avatars/cicling.jpg',
               id:8,
-              text: 'kjkjkjkjkjkj'
+              text: 'Evitar actividades físicas en condiciones de elevado calor, sobre todo si la humedad es alta, o hay frío intenso.'
             },
                           {
               image: '/images/avatars/ejercicio2.jpg',
               id:9,
-              text: 'kjkjkjkjkjkj'
+              text: 'Siempre que se estira, asegúrese de que se mantiene la postura durante 10 a 30 segundos.'
             }
           ];
   
@@ -59,20 +59,6 @@
     
 }());
 
-/*
-AGUA/HIDRATACION
 
-¿Te entra el sueño después de la comida?
-Toma un vaso de agua 1/2 hora antes de comer y verás como te ayuda a mantenerte despierto.
-
-
-El agua mejora la circulación sanguínea. Si te tomas un vasito antes de bañarte y antes de dormir, evitarás el dolor de los calambres en las pantorrillas o muslos.
-
-EJERCICIO
-
-La actividad por la mañana también favorece que puedas establecer una rutina.
-A primera hora no tienes tiempo para inventarte ninguna excusa ...
-
-Los ejercicios que requieren movilidad, como correr o montar bicicleta, incrementan algunas hormonas o algunos neurotransmisores como las endorfinas que hacen que uno se sienta mejor, que esté con más vitalidad y más animado*/
 
 

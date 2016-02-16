@@ -1,14 +1,17 @@
-<div class="card-columns">
-    <h2>MIS RESERVAS</h2>
+<div class="page-header">
+  <h1>Mis reservas</h1>
+</div>
+<div class="col-md-8">
 <div class="card" ng-repeat="reserva in reservas">
 
-  <div class="card card-block text-xs-center card-info">
+  <div class="card text-center card-success">
       {{reserva.attributes.actividad.attributes.tipo.attributes.title | uppercase}}
   </div>
   <div class="card-block">
       <h6>Sala {{reserva.attributes.actividad.attributes.sala}}</h6>
     <p class="card-text">{{reserva.attributes.actividad.attributes.date |date:'longDate'}}</p>
-         <a ng-click="cancelar(reserva.id)" class="btn btn-danger">Cancelar</a> 
+     
+      <a ng-click="cancelar(reserva.id)" class="btn btn-danger">Cancelar</a>
   </div>
 </div>
 </div>
