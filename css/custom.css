@@ -1,3 +1,7 @@
+/*CSS CUstomizado*/
+
+font-family: font-family: 'Gloria Hallelujah', cursive;
+
 .thumbnail{
     width:600px;
     height:400px;  
@@ -30,11 +34,11 @@
 }
 
 .popover-title{
-    background-color: #6B5F5F;
+    background-color: #f53e74;
 }
 
 .popover-content{
-    background-color: #111;
+    background-color: #5bc0de;
 }
 
 .flex-caption {
@@ -43,7 +47,7 @@
   padding: 2%;
   left: 0;
   bottom: 0;
-  background: rgba(0,0,0,.2);
+  background: rgba(0,0,0,.5);
   color: #fff;
   text-shadow: 2px 2px 8px black;
     text-align: center;
@@ -64,10 +68,54 @@
     color: white;
 }
 
+li, p, a, legend{
+    font-family: 'Gloria Hallelujah', Arial, serif; 
+}
+
+.profile-usertitle{
+    font-family: 'Gloria Hallelujah', Arial, serif; 
+    font-weight: bolder;
+}
+
+h1,h2{
+   font-family: 'Gloria Hallelujah', Arial, serif; font-weight: 400; 
+    color:#5bc0de;
+}
+
+legend{
+   font-size: 40px; 
+    color:#5bc0de;
+}
+
+.avatar-selected{
+    box-shadow: 0px 0px 10px green;
+}
+
+.img-responsive {
+    float: left;
+    max-width: 100%;
+    height: auto;
+}
+
+.card-title{
+    font-size: 40px !important;
+    text-shadow: 2px 2px 5px #5bc0de;
+    opacity: 1;
+    color:#f53e74 !important;
+}
+
+.card-img {
+    border-radius: .25rem;
+    border: 3px solid #5bc0de;
+}
+
+.menu-actividades{
+    border-bottom: 2px solid #5bc0de;
+    margin-bottom: 20px;
+}
+
 /***
-User Profile Sidebar by @keenthemes
-A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
-Licensed under MIT
+
 ***/
 
 body {
@@ -178,19 +226,14 @@ body {
   min-height: 460px;
 }
 
-.avatar-selected{
-    box-shadow: 0px 0px 10px green;
+.btn-danger{
+    background-color: #f53e74;
 }
 
-.img-responsive {
-    float: left;
-    max-width: 100%;
-    height: auto;
+.btn-danger{ .btn-success{
+    background-color: #5cea88;
 }
+    
 
-.card-title{
-    font-size: 40px !important;
-    text-shadow: 2px 2px 8px black;
-    opacity: 0.6;
-}
+
 

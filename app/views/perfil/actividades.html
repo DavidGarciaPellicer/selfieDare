@@ -1,7 +1,9 @@
 <!--HORARIO DE LAS CLASES. HAY UN MENÚ CON PESTAÑAS PARA CADA DIA DE LA SEMANA.
 DESDE EL ACTUAL HASTA LOS 7 DÍAS POSTERIORES -->
-            <h2>CLASES</h2>  
-          <ul class="nav nav-pills">
+<div class="page-header">
+  <h1>Clases</h1>
+</div>  
+          <ul class="nav nav-pills menu-actividades">
             <li ng-repeat="dia in actividadesPorDia"
                 ng-class="{active: $index == 0}" 
                 class="fx-zoom-normal"
@@ -17,15 +19,15 @@ DESDE EL ACTUAL HASTA LOS 7 DÍAS POSTERIORES -->
               
               <!--LISTAR TODAS LAS ACTIVIDADES DEL DÍA AQUI-->            
         </ul>
-
-        <div class="card-columns">
-            <div class="card card-default text-xs-center fx-fade-up" ng-repeat="actividad in actividadesPorDia[tabSelected]">
+<div class="row">
+<div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="actividad in actividadesPorDia[tabSelected]">
+            <div class="card card-default text-xs-center fx-fade-up" >
               <div class="card-block card-info">
                 <h4 class="card-title">{{actividad.attributes.date | date:'HH:mm'}}</h4>
                 <h6 class="card-subtitle text-muted" style="color:white">{{actividad.attributes.tipo.attributes.title}}</h6>
               </div>
               <img ng-src="{{actividad.reservada?
-                           'http://files.parsetfss.com/5d27ade1-3065-494b-bffa-13397caaf664/tfss-9c5fcfcd-d7fb-4234-bef8-842eb6a1567f-reservada.png' :actividad.attributes.tipo.attributes.imagen._url}}"
+                           'http://files.parsetfss.com/5d27ade1-3065-494b-bffa-13397caaf664/tfss-6881efe8-5b52-4080-af5f-7b249960ba82-reservada.png' :actividad.attributes.tipo.attributes.imagen._url}}"
                    alt="Card image" style="width:150px">
               <div class="card-block card-primary">
             <p class="card-text" style="color:white">Plazas disponibles: {{actividad.attributes.disponibles}}</p>
@@ -35,3 +37,4 @@ DESDE EL ACTUAL HASTA LOS 7 DÍAS POSTERIORES -->
               </div>
             </div>
         </div>
+    </div>

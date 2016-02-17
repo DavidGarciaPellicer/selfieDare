@@ -10,6 +10,8 @@
             //Esta propiedad nos servirá luego para mostrar una actividad con un estilo u otro según se haya reservado.Miramos primero las reservas del usuario
          
         var reservas;
+        
+   if(UserService.getUsuarioSesion()){
         var userId = UserService.getUsuarioSesion().objectId; 
         ReservasService.getUserReservas(userId).then(function (res){
             reservas = res;
@@ -46,6 +48,8 @@
             $scope.actividadesPorDia = actividadesPorDia;
                 console.log('actividadesPorDia: '+actividadesPorDia);
             });
+            
+        }
             
         });
         
