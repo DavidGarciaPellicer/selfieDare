@@ -8,14 +8,18 @@
   <!-- Default panel contents -->
   <div class="panel-heading">{{reserva.attributes.actividad.attributes.tipo.attributes.title | uppercase}}</div>
   <!-- Table -->
-  <table class="table table-striped">
+  <table class="table table-striped text-center">
     <tr>
       <td>Sala</td>
       <td>{{reserva.attributes.actividad.attributes.sala}}</td>      
     </tr>
       <tr>
       <td>Fecha</td>
-      <td>{{reserva.attributes.actividad.attributes.date |date:'longDate'}}</td>      
+      <td>{{reserva.attributes.actividad.attributes.date |date:'d-MMM' | uppercase}}</td>      
+    </tr>
+      <tr>
+      <td>Hora</td>
+      <td>{{reserva.attributes.actividad.attributes.date |date:'shortTime'}}</td>      
     </tr>
   </table>
          <div class="panel-footer text-center"> <a ng-click="cancelar(reserva.id)" class="btn btn-danger ">Cancelar</a></div>

@@ -8,9 +8,9 @@ var app = angular.module('RetameApp', [
     'ui.bootstrap',
     'ngAnimate',
     '720kb.fx',
-    'bc.Flickity',
     'angular-flexslider',
-    'googlechart'
+    'googlechart',
+    'angularMoment'
 ]);
 
   //'parse-angular',

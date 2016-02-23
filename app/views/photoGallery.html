@@ -1,10 +1,30 @@
+<!--
+<div class="row">
+    <div style="width:318; height:270px;border-radius: .25rem;
+    border: 2px solid #5bc0de;"
+         ng-repeat="foto in galeria" 
+         class="col-sm-12 col-md-6 col-lg-4" 
+          dynamic-background=""
+        background-image="{{foto.attributes.picture._url}}"
+        background-size="cover"
+        background-repeat="no-repeat"
+        background-position="top center"
+        >
+            <p>My dynamic background div</p>
 
+
+    </div>
+</div>
+
+-->
 <div ng-repeat="foto in galeria" class="col-sm-12 col-md-6 col-lg-4">
     <div class="card card-inverse text-xs-center initial-card" >
       <img class="card-img" src="{{foto.attributes.picture._url}}" style="width:318; height:270px;" alt="Card image">
       <div class="card-img-overlay">
-        <a class="card-title"          
-           uib-popover="{{foto.attributes.description}}" popover-title="{{foto.attributes.title | uppercase}}" type="button" class="btn btn-default" popover-trigger="mouseenter">{{foto.attributes.title}}</a>
+        <a class="card-title titulo-inicio"          
+           uib-popover="{{foto.attributes.description}}" popover-title="{{foto.attributes.title | uppercase}}" type="button" class="btn btn-default" popover-trigger="mouseup">{{foto.attributes.title}}</a>
       </div>
    </div>
 </div>
+
+

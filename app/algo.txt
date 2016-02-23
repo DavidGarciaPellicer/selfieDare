@@ -1,40 +1,17 @@
-<!--HORARIO DE LAS CLASES. HAY UN MENÚ CON PESTAÑAS PARA CADA DIA DE LA SEMANA.
-DESDE EL ACTUAL HASTA LOS 7 DÍAS POSTERIORES -->
-<div class="page-header">
-  <h1>Clases</h1>
-</div>  
-          <ul class="nav nav-pills menu-actividades">
-            <li ng-repeat="dia in actividadesPorDia"
-                ng-class="{active: $index == 0}" 
-                class="fx-zoom-normal"
-                >
-                <a href ng-init="setTab(tabInitial)"
-                   ng-click="setTab($index)"
-                   ngfx-pulse="x == $index"
-                   ngfx-speed="medium"
-                   >
-                    {{dia[0].attributes.date | date:'EEEE' |uppercase}}
-                </a>
-              </li>
-              
-              <!--LISTAR TODAS LAS ACTIVIDADES DEL DÍA AQUI-->            
-        </ul>
-<div class="row">
-<div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="actividad in actividadesPorDia[tabSelected]">
-            <div class="card card-default text-xs-center fx-fade-up" >
-              <div class="card-block card-info">
-                <h4 class="card-title">{{actividad.attributes.date | date:'HH:mm'}}</h4>
-                <h6 class="card-subtitle text-muted" style="color:white">{{actividad.attributes.tipo.attributes.title}}</h6>
-              </div>
-              <img ng-src="{{actividad.reservada?
-                           'http://files.parsetfss.com/5d27ade1-3065-494b-bffa-13397caaf664/tfss-6881efe8-5b52-4080-af5f-7b249960ba82-reservada.png' :actividad.attributes.tipo.attributes.imagen._url}}"
-                   alt="Card image" style="width:150px">
-              <div class="card-block card-primary">
-            <p class="card-text" style="color:white">Plazas disponibles: {{actividad.attributes.disponibles}}</p>
-             <p class="card-text" style="color:black">Calorías: {{actividad.attributes.calorias}}</p>
-             <h6 class="card-text" style="color:white">Monitor: {{actividad.attributes.monitor.attributes.name}}</h6>
-                <a ng-click="open(actividad.id, actividad.attributes.tipo.attributes.title, actividad.attributes.date)" class="btn btn-success" ng-hide="actividad.reservada">Reservar</a>
-              </div>
-            </div>
-        </div>
-    </div>
+Ejercita los músculos internos para mantener tu equilibrio corporal y dar estabilidad y firmeza a la espalda. Evita los molestos dolores de espalda.
+
+Para la edad infantil preparamos clases de gimnasia artística. Gracias a ella se refuerza la fuerza, movilidad, flexibilidad y coordinación muscular de los más pequeños.
+
+Mantén tu cuerpo en forma con un ejercicio suave pero imprescindible para mantenerte en forma. Aprende a corregir tu postura y controlar el trabajo de tu cuerpo.
+
+Trabaja tus músculos en nuestras instalaciones. Con la flexibilidad de no tener horario fijo, nuestros aparatos están siempre disponibles para ti.
+
+Programa de entrenamiento cardiovascular inspirado en las Artes Marciales, con el que liberarás grandes dosis de adrenalina y descubrirás tu fuerza interior.
+
+Aumenta tu masa muscular y quema una gran cantidad de calorías gracias al Body Pump. En nuestras clases realizarás repeticiones para trabajar tu fuerza, tonificando y definiendo los músculos
+
+Pierde peso bailando. La mezcla de ritmos rápidos y lentos combinados con series de ejercicios permite además de bajar esos kilos de más que tanto cuesta eliminar, tonificar tu musculatura.
+
+Trabaja tus piernas y glúteos subiendo y bajando escaleras. Mejora también tu flexibilidad y la coordinación.
+
+Móntate en nuestras bicicletas y empieza a subir el Tourmalet al ritmo de la música.

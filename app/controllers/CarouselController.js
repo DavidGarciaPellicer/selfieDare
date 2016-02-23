@@ -16,12 +16,12 @@
             {
               image: '/images/avatars/chicaBebiendo.jpg',
               id:3,
-              text: 'Necesitas entre 100 y 200 ml de agua simple por cada 20 minutos de ejercicio para mantenerte hidratado'
+              text: 'Necesitas entre 100 y 200 ml de agua por cada 20 minutos de ejercicio para mantenerte hidratado'
             },
             {
               image: '/images/avatars/alimentacion.jpg',
               id:4,
-              text: 'Si no existe la costumbre de desayunar se recomienda incorporar el desayuno en forma progresiva, para evitar intolerancia digestiva, pero no es razonable su eliminación.'
+              text: 'El desayuno es la comida más importante del día. Es importante que ingieras muchas vitaminas y la mejor manera de hacerlo es a través de frutas y verduras'
             },
                           {
               image: '/images/avatars/ensaladaFruta.jpg',
@@ -31,22 +31,22 @@
                           {
               image: '/images/avatars/ejercicioComida.jpg',
               id:6,
-              text: 'Se recomienda consumir las grasas de origen vegetal, como, aceite de oliva, maíz, girasol, nueces, etc.'
+              text: 'Se recomienda consumir las grasas de origen vegetal, como, aceite de oliva, maíz, girasol o nueces'
             },
                           {
               image: '/images/avatars/ejercicio.jpg',
               id:7,
-              text: 'Se aconseja realizar deporte a primera o a última hora del día.'
+              text: 'Se aconseja realizar deporte a primera o a última hora del día. Así conseguirás aprovechar mucho mejor tu horario diario.'
             },
                           {
               image: '/images/avatars/cicling.jpg',
               id:8,
-              text: 'Evitar actividades físicas en condiciones de elevado calor, sobre todo si la humedad es alta, o hay frío intenso.'
+              text: 'Si no realizas deporte habitualmente, evita hacer actividades físicas en condiciones de elevado calor, sobre todo si la humedad es alta, o hay frío intenso.'
             },
                           {
               image: '/images/avatars/ejercicio2.jpg',
               id:9,
-              text: 'Siempre que se estira, asegúrese de que se mantiene la postura durante 10 a 30 segundos.'
+              text: 'Cuando realices estiramientos,asegúrate que mantienes la postura entre 10 y 30 segundos.'
             }
           ];
   

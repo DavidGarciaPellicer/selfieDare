@@ -1,0 +1,99 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'angularjs-background',
+1 verbose cli   '--save' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.3
+4 verbose config Skipping project config: /Users/davidgarcia/.npmrc. (matches userconfig)
+5 verbose install initial load of /Users/davidgarcia/package.json
+6 warn package.json nodejs-test-app@1.0.0 No repository field.
+7 warn package.json nodejs-test-app@1.0.0 No README data
+8 verbose installManyTop reading scoped package data from /Users/davidgarcia/node_modules/angular/package.json
+9 verbose installManyTop reading scoped package data from /Users/davidgarcia/node_modules/angular-parse/package.json
+10 verbose installManyTop reading scoped package data from /Users/davidgarcia/node_modules/gulp-connect/package.json
+11 verbose installManyTop reading scoped package data from /Users/davidgarcia/node_modules/gulp-ruby-sass/package.json
+12 verbose installManyTop reading scoped package data from /Users/davidgarcia/node_modules/gulp-sass/package.json
+13 verbose installManyTop reading scoped package data from /Users/davidgarcia/node_modules/jasmine-node/package.json
+14 verbose installManyTop reading scoped package data from /Users/davidgarcia/node_modules/moment/package.json
+15 verbose installManyTop reading scoped package data from /Users/davidgarcia/node_modules/ng-fx/package.json
+16 verbose installManyTop reading scoped package data from /Users/davidgarcia/node_modules/parse/package.json
+17 info package.json jasmine-node@1.14.5 No license field.
+18 verbose readDependencies loading dependencies from /Users/davidgarcia/package.json
+19 silly cache add args [ 'angularjs-background', null ]
+20 verbose cache add spec angularjs-background
+21 silly cache add parsed spec Result {
+21 silly cache add   raw: 'angularjs-background',
+21 silly cache add   scope: null,
+21 silly cache add   name: 'angularjs-background',
+21 silly cache add   rawSpec: '',
+21 silly cache add   spec: '*',
+21 silly cache add   type: 'range' }
+22 silly addNamed angularjs-background@*
+23 verbose addNamed "*" is a valid semver range for angularjs-background
+24 silly addNameRange { name: 'angularjs-background', range: '*', hasData: false }
+25 silly mapToRegistry name angularjs-background
+26 silly mapToRegistry using default registry
+27 silly mapToRegistry registry https://registry.npmjs.org/
+28 silly mapToRegistry uri https://registry.npmjs.org/angularjs-background
+29 verbose addNameRange registry:https://registry.npmjs.org/angularjs-background not in flight; fetching
+30 verbose request uri https://registry.npmjs.org/angularjs-background
+31 verbose request no auth needed
+32 info attempt registry request try #1 at 8:30:59 PM
+33 verbose request id 01003b5891f42c30
+34 http request GET https://registry.npmjs.org/angularjs-background
+35 http 404 https://registry.npmjs.org/angularjs-background
+36 verbose headers { 'content-type': 'application/json',
+36 verbose headers   'cache-control': 'max-age=0',
+36 verbose headers   'content-length': '2',
+36 verbose headers   'accept-ranges': 'bytes',
+36 verbose headers   date: 'Wed, 17 Feb 2016 19:30:59 GMT',
+36 verbose headers   via: '1.1 varnish',
+36 verbose headers   age: '0',
+36 verbose headers   connection: 'keep-alive',
+36 verbose headers   'x-served-by': 'cache-lcy1128-LCY',
+36 verbose headers   'x-cache': 'MISS',
+36 verbose headers   'x-cache-hits': '0',
+36 verbose headers   'x-timer': 'S1455737459.257230,VS0,VE104' }
+37 silly get cb [ 404,
+37 silly get   { 'content-type': 'application/json',
+37 silly get     'cache-control': 'max-age=0',
+37 silly get     'content-length': '2',
+37 silly get     'accept-ranges': 'bytes',
+37 silly get     date: 'Wed, 17 Feb 2016 19:30:59 GMT',
+37 silly get     via: '1.1 varnish',
+37 silly get     age: '0',
+37 silly get     connection: 'keep-alive',
+37 silly get     'x-served-by': 'cache-lcy1128-LCY',
+37 silly get     'x-cache': 'MISS',
+37 silly get     'x-cache-hits': '0',
+37 silly get     'x-timer': 'S1455737459.257230,VS0,VE104' } ]
+38 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/angularjs-background
+38 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+38 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:242:14)
+38 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+38 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:198:22)
+38 verbose stack     at emitTwo (events.js:87:13)
+38 verbose stack     at Request.emit (events.js:172:7)
+38 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1063:14)
+38 verbose stack     at emitOne (events.js:82:20)
+38 verbose stack     at Request.emit (events.js:169:7)
+38 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+39 verbose statusCode 404
+40 verbose pkgid angularjs-background
+41 verbose cwd /Users/davidgarcia/projects/selfieDare
+42 error Darwin 15.0.0
+43 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "angularjs-background" "--save"
+44 error node v4.2.3
+45 error npm  v2.14.7
+46 error code E404
+47 error 404 Registry returned 404 for GET on https://registry.npmjs.org/angularjs-background
+47 error 404
+47 error 404 'angularjs-background' is not in the npm registry.
+47 error 404 You should bug the author to publish it (or use the name yourself!)
+47 error 404 It was specified as a dependency of 'nodejs-test-app'
+47 error 404
+47 error 404 Note that you can also install from a
+47 error 404 tarball, folder, http url, or git url.
+48 verbose exit [ 1, true ]

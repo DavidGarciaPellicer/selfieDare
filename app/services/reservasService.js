@@ -76,7 +76,86 @@
               }
             });
                  return d.promise;      
+        },
+            
+        //devuelve las reservas de la semana          
+        this.getUserWeekReservas = function(userId){
+			var d = $q.defer();
+            
+            var startOfWeek = moment().startOf('isoweek').toDate();
+            var endOfWeek   = moment().endOf('isoweek').toDate();
+            var today = new Date();
+            
+            var User = Parse.Object.extend("User");
+            var user = new User();
+            user.id = userId.objectId;
+			// Consultamos primero las reservas
+			var Reservas = Parse.Object.extend("Reservas");
+			var reservasQuery = new Parse.Query(Reservas);
+            reservasQuery.include("actividad.tipo");
+			reservasQuery.equalTo("userId", user);
+            reservasQuery.greaterThan('horario',startOfWeek);
+            reservasQuery.lessThan('horario',today);
+
+			// Consulta de las reservas del usuario
+			reservasQuery.find({
+				success: function (reservas) {
+            //una vez tenemos las reservas queremos conocer tb los datos de la actividad
+					d.resolve(reservas);
+				},
+                error: function (reservas, error){
+                    alert('Error en la reserva ');
+                    d.reject(error);
+                }
+			});
+
+			return d.promise;      
+        },
+        
+        //const weeksInMonth = moment(moment().endOf('month') - moment().startOf('month')).weeks()
+            
+        //devuelve las reservas de la semana          
+        this.get4SemanasAnterioresReservas = function(userId){
+			var d = $q.defer();
+            var dias = new Date().getDay()!=0 ? new Date().getDay():7;
+            var domingoAnterior = moment().subtract(dias,'day');
+            var lunes4SemanasAntes = domingoAnterior.clone().subtract(27, 'day')
+            
+            var User = Parse.Object.extend("User");
+            var user = new User();
+            user.id = userId.objectId;
+			// Consultamos primero las reservas
+			var Reservas = Parse.Object.extend("Reservas");
+			var reservasQuery = new Parse.Query(Reservas);
+            reservasQuery.include("actividad.tipo");
+			reservasQuery.equalTo("userId", user);
+            reservasQuery.greaterThan("horario", lunes4SemanasAntes.toDate());
+            reservasQuery.lessThanOrEqualTo("horario", domingoAnterior.toDate());
+
+			// Consulta de las reservas del usuario
+			reservasQuery.find({
+				success: function (reservas) {
+
+                //tenemos las reservas de las 4 semanas anteriores
+                //se agrupan en el array por semana
+
+                var groupedByWeek = _.groupBy(reservas, function(reserva) {
+                    var fecha = moment(reserva.attributes.horario).format('DD/MM/YYYY');
+                    var dateMoment = moment(fecha,'DD/MM/YYYY');
+                    return dateMoment.week();
+                });
+            
+					d.resolve(groupedByWeek);
+				},
+                error: function (reservas, error){
+                    alert('Error en la reserva ');
+                    d.reject(error);
+                }
+			});
+
+			return d.promise;      
         }
+            
     };
     
     angular.module('RetameApp').service('ReservasService', ReservasService);
