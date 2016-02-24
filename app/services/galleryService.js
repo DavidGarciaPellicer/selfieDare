@@ -18,12 +18,8 @@
 			// Perform the query
 			imageQuery.find({
 				success: function (imagenes) {
-					angular.forEach(imagenes, function (img) {
-						var img = new Image(img);
-						gallery.push(img)
-					});
 					// Finished
-					d.resolve(gallery);
+					d.resolve(imagenes);
 				}
 			});
 
