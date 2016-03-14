@@ -58,6 +58,11 @@ var app = angular.module('RetameApp', [
               templateUrl: 'app/views/perfil/calorias.html',
               controller: 'CaloriasController'
             })
+            .state('perfil.tabla', {
+              url: "/tabla",
+              templateUrl: 'app/views/perfil/tabla.html',
+              controller: 'TablaController'
+            })
             .state('upload', {
               url: "/upload",
               templateUrl: 'app/views/imageUpload.html',

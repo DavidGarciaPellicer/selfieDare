@@ -29,6 +29,72 @@
 
 			return d.promise;      
         },
+            
+                    //devuelve las reservas de un usuario          
+        this.getAllUserReservas = function(userId){
+			var d = $q.defer();
+            var User = Parse.Object.extend("User");
+            var user = new User();
+            user.id = userId;
+			// Consultamos primero las reservas
+			var Reservas = Parse.Object.extend("Reservas");
+			var reservasQuery = new Parse.Query(Reservas);
+            reservasQuery.include("actividad.tipo");
+			reservasQuery.equalTo("userId", user);
+            reservasQuery.descending('createdAt');
+
+			// Consulta de las reservas del usuario
+			reservasQuery.find({
+				success: function (reservas) {
+            //una vez tenemos las reservas queremos conocer tb los datos de la actividad
+					d.resolve(reservas);
+				},
+                error: function (reservas, error){
+                    alert('Error en la reserva ');
+                    d.reject(error);
+                }
+			});
+
+			return d.promise;      
+        },
+            
+                                //devuelve las reservas de un usuario          
+        this.getFilteredReservas = function(cadena, userId){
+			var d = $q.defer();
+            var User = Parse.Object.extend("User");
+            var user = new User();
+            user.id = userId;
+			// Consultamos primero las reservas
+			var Reservas = Parse.Object.extend("Reservas");
+			var reservasQuery = new Parse.Query(Reservas);
+            reservasQuery.include("actividad.tipo");
+			reservasQuery.equalTo("userId", user);
+            reservasQuery.descending('createdAt');
+
+			// Consulta de las reservas del usuario
+			reservasQuery.find({
+				success: function (reservas) {
+            //una vez tenemos las reservas queremos conocer tb los datos de la actividad
+                    var newres = [];
+                    angular.forEach(reservas, function(res){
+                                                                   
+                      if(res.attributes.actividad.attributes.tipo.attributes.title.indexOf(cadena)!=-1){
+                        newres.push(res);
+                      }
+                    })
+           
+					d.resolve(newres);
+				},
+                error: function (reservas, error){
+                    alert('Error en la reserva ');
+                    d.reject(error);
+                }
+			});
+
+			return d.promise;      
+        },
+            
+            
                 
         this.createReserva = function(idActividad, horario, idUser) {
             var d = $q.defer();    

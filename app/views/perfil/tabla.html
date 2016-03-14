@@ -1,0 +1,16 @@
+<input type="text" placeholder="Search in table" ng-model="searchReserva">
+<button ng-click="buscar(searchReserva)">Buscar</button>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th ng-click="sortType = 'attributes.actividad.attributes.tipo.attributes.title';
+                      sortReverse = !sortReverse">Actividad</th>
+        <th ng-click="sortType = 'attributes.horario';
+                      sortReverse = !sortReverse">Horario</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="reserva in reservas | orderBy:sortType:sortReverse | filter: searchReserva">
+        <td>{{reserva.attributes.actividad.attributes.tipo.attributes.title}}</td>
+        <td>{{reserva.attributes.horario | date}}</td>
+    </tbody>
